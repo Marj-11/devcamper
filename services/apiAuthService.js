@@ -20,8 +20,6 @@ export default class AuthService {
     }
 
     getBootcamps() {
-        console.log(token);
-
         return this.getBaseUrl().get("/bootcamps");
     }
     getCourses() {
