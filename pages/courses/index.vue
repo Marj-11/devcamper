@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import CourseCard from "@/components/Bootcamps/CourseCard.vue";
+import CourseCard from "@/components/courses/CourseCard.vue";
 import { mapState } from "vuex";
 
 export default {

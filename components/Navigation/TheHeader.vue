@@ -13,7 +13,7 @@
       >
       <nuxt-link class="d-flex" to="/about-us"><h3>about us</h3></nuxt-link>
 
-      <p v-if="user">Welcome &nbsp;{{ user }}!</p>
+      <p v-if="user">Welcome {{ user }}!</p>
       <div>
         <nuxt-link v-if="!loggedIn" to="/signup"
           ><v-btn class="mr-4" color="#FFB300">
@@ -33,6 +33,7 @@
 
 <script>
 export default {
+  components: {},
   // data() {
   //   return {};
   // },

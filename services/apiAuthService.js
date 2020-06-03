@@ -20,9 +20,20 @@ export default class AuthService {
     }
 
     getBootcamps() {
+        console.log(token);
+
         return this.getBaseUrl().get("/bootcamps");
+    }
+    getCourses() {
+        return this.getBaseUrl().get("/courses");
     }
     getUser() {
         return this.getBaseUrl().get("/auth/me");
+    }
+    addNewBootcamp(body) {
+        return this.getBaseUrl().post("/bootcamps", body);
+    }
+    deleteBootcamp(id) {
+        return this.getBaseUrl().delete("/bootcamps/" + id);
     }
 }

@@ -24,5 +24,6 @@ export default {
 a {
   max-height: 22px;
   text-decoration: none;
+  color: yellowgreen;
 }
 </style>

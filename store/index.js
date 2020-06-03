@@ -10,8 +10,10 @@ export const state = () => ({
     courses: [],
     course: {},
     userToken: null,
-    user: null
+    user: null,
+    notifications: []
 });
+let nextId = 1;
 export const mutations = {
     SET_BOOTCAMPS(state, bootcamps) {
         state.bootcamps = bootcamps;
@@ -39,6 +41,17 @@ export const mutations = {
     },
     SET_USER(state, userData) {
         state.user = userData;
+    },
+    PUSH(state, notification) {
+        state.notifications.push({
+            ...notification,
+            id: nextId++
+        });
+    },
+    DELETE(state, notificationToRemove) {
+        state.notifications = state.notifications.filter(
+            notification => notification.id !== notificationToRemove.id
+        );
     }
 };
 export const actions = {
@@ -61,18 +74,36 @@ export const actions = {
         //     commit("SET_USER_IN", decoded);
         // }
     },
-    fetchBootcamps({ commit, state }) {
-        return new AuthService(state).getBootcamps().then(response => {
-            commit("SET_BOOTCAMPS", response.data.data);
-        });
+    fetchBootcamps({ commit, dispatch, state }) {
+        return new AuthService(state)
+            .getBootcamps()
+            .then(response => {
+                commit("SET_BOOTCAMPS", response.data.data);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a problem fetching bootcamps: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
     },
-    fetchBootcamp({ commit }, id) {
-        return apiService.getBootcamp(id).then(response => {
-            commit("SET_BOOTCAMP", response.data.data);
-        });
+    fetchBootcamp({ commit, dispatch }, id) {
+        return apiService
+            .getBootcamp(id)
+            .then(response => {
+                commit("SET_BOOTCAMP", response.data.data);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a problem fetching bootcamp: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
     },
-    fetchCourses({ commit }) {
-        return apiService.getCourses().then(response => {
+    fetchCourses({ commit, state }) {
+        return new AuthService(state).getCourses().then(response => {
             commit("SET_COURSES", response.data.data);
         });
     },
@@ -81,12 +112,27 @@ export const actions = {
             commit("SET_COURSE", response.data.data);
         });
     },
-    signUserUp({ commit }, body) {
-        return apiService.registerUser(body).then(response => {
-            Cookie.set("access_token", response.data.token);
-            // commit("SET_USER_UP", response.data);
-            commit("SET_USER_TOKEN_IN", response.data.token);
-        });
+    signUserUp({ commit, dispatch }, body) {
+        return apiService
+            .registerUser(body)
+            .then(response => {
+                Cookie.set("access_token", response.data.token);
+                // commit("SET_USER_UP", response.data);
+                commit("SET_USER_TOKEN_IN", response.data.token);
+                const notification = {
+                    type: "success",
+                    message: `You'er successfully signed up!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a problem signing up!`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
     },
     login({ commit, state }, body) {
         return apiService.loginUser(body).then(response => {
@@ -99,6 +145,50 @@ export const actions = {
     },
     logout({ commit }) {
         commit("CLEAR_USER_DATA");
+    },
+    addNewBootcamp({ commit, dispatch, state }, body) {
+        return new AuthService(state)
+            .addNewBootcamp(body)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `Your bootcamp has been successfully added!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
+    deleteBootcamp({ commit, dispatch, state }, id) {
+        return new AuthService(state)
+            .deleteBootcamp(id)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `Your bootcamp has been successfully deleted!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
+    add({ commit }, notification) {
+        commit("PUSH", notification);
+    },
+    remove({ commit }, notificationToRemove) {
+        commit("DELETE", notificationToRemove);
     }
 };
 export const getters = {
