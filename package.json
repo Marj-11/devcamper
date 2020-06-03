@@ -3,12 +3,13 @@
     "version": "1.0.0",
     "description": "My marvelous Nuxt.js project",
     "author": "Marj-11",
-    "private": false,
+    "private": true,
     "scripts": {
         "dev": "nuxt",
         "build": "nuxt build",
         "start": "nuxt start",
-        "generate": "nuxt generate"
+        "generate": "nuxt generate",
+        "heroku-postbuild": "npm run build"
     },
     "dependencies": {
         "@nuxtjs/axios": "^5.3.6",
