@@ -9,8 +9,7 @@
         "build": "nuxt build",
         "start": "nuxt start",
         "generate": "nuxt generate",
-        "web": "nuxt start",
-        "heroku-postbuild": "ng build --prod"
+        "heroku-postbuild": "npm run build"
     },
     "dependencies": {
         "@nuxtjs/axios": "^5.3.6",
