@@ -15,7 +15,6 @@
         "node": "12.16.x",
         "npm": "6.x"
     },
-    "web": "nuxt start",
     "dependencies": {
         "@nuxtjs/axios": "^5.3.6",
         "cookie-parser": "^1.4.5",
