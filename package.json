@@ -6,7 +6,8 @@
     "private": true,
     "scripts": {
         "dev": "nuxt",
-        "web": "nuxt start"
+        "build": "nuxt build",
+        "start": "nuxt start"
     },
     "engines": {
         "node": "12.16.x",
