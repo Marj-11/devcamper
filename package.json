@@ -11,6 +11,10 @@
         "generate": "nuxt generate",
         "heroku-postbuild": "npm run build"
     },
+    "engines": {
+        "node": "12.16.x",
+        "npm": "6.x"
+    },
     "dependencies": {
         "@nuxtjs/axios": "^5.3.6",
         "cookie-parser": "^1.4.5",
