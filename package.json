@@ -2,8 +2,11 @@
     "name": "devcamper",
     "version": "1.0.0",
     "description": "My marvelous Nuxt.js project",
+    "engines": {
+        "node": "12.16.x"
+    },
     "author": "Marj-11",
-    "private": false,
+    "private": true,
     "scripts": {
         "dev": "nuxt",
         "build": "nuxt build",
