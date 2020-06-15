@@ -8,7 +8,7 @@
         "dev": "nuxt",
         "build": "nuxt build",
         "generate": "nuxt generate",
-        "heroku-postbuild": "npm run build"
+        "heroku-postbuild": "nuxt build"
     },
     "engines": {
         "node": "12.16.x",
