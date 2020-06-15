@@ -6,9 +6,10 @@
     "private": true,
     "scripts": {
         "dev": "nuxt",
+        "build": "nuxt build",
         "start": "nuxt start",
-        "web": "nuxt start",
-        "heroku-postbuild": "npm run dev"
+        "generate": "nuxt generate",
+        "heroku-postbuild": "npm run build"
     },
     "engines": {
         "node": "12.16.x",
