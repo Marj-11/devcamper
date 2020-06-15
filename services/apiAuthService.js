@@ -31,6 +31,9 @@ export default class AuthService {
     addNewBootcamp(body) {
         return this.getBaseUrl().post("/bootcamps", body);
     }
+    updateBootcamp(body, id) {
+        return this.getBaseUrl().put("/bootcamps/" + id, body);
+    }
     deleteBootcamp(id) {
         return this.getBaseUrl().delete("/bootcamps/" + id);
     }

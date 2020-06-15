@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     postLink() {
-      return "/bootcamps/" + this.bootcamp._id;
+      return "/bootcamps/" + this.bootcamp.id;
     }
   }
 };

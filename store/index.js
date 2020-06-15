@@ -57,7 +57,6 @@ export const mutations = {
 export const actions = {
     nuxtServerInit({ commit, state }, { req }) {
         let accessTokenCookie = req.headers.cookie;
-
         if (accessTokenCookie === undefined) {
             return;
         } else {
@@ -153,6 +152,25 @@ export const actions = {
                 const notification = {
                     type: "success",
                     message: `Your bootcamp has been successfully added!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
+    updateBootcamp({ commit, dispatch, state }, bootcamp) {
+        return new AuthService(state)
+            .updateBootcamp(bootcamp, state.bootcamp.id)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `Your bootcamp has been successfully updated!`
                 };
                 dispatch("add", notification);
             })

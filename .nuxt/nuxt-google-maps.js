@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import GMap from "C:\\Users\\Marj\\Desktop\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMap.vue";
-import GMapMarker from "C:\\Users\\Marj\\Desktop\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMapMarker.vue";
-import GMapCircle from "C:\\Users\\Marj\\Desktop\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMapCircle.vue";
-import GMapInfoWindow from "C:\\Users\\Marj\\Desktop\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMapInfoWindow.vue";
+import GMap from "C:\\Users\\Marj\\Desktop\\Projects\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMap.vue";
+import GMapMarker from "C:\\Users\\Marj\\Desktop\\Projects\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMapMarker.vue";
+import GMapCircle from "C:\\Users\\Marj\\Desktop\\Projects\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMapCircle.vue";
+import GMapInfoWindow from "C:\\Users\\Marj\\Desktop\\Projects\\Devcamper-nuxt-pro\\devcamper\\node_modules\\nuxt-gmaps\\components\\GMapInfoWindow.vue";
 export default(context, inject) =>{
   Vue.component('GMap', GMap);
   Vue.component('GMapMarker', GMapMarker);

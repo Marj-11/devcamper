@@ -12,9 +12,9 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_4a853b90 from 'nuxt_plugin_plugin_4a853b90' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_nuxtgooglemaps_18a8a570 from 'nuxt_plugin_nuxtgooglemaps_18a8a570' // Source: .\\nuxt-google-maps.js (mode: 'all')
-import nuxt_plugin_axios_d16a95f2 from 'nuxt_plugin_axios_d16a95f2' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_plugin_746d7498 from 'nuxt_plugin_plugin_746d7498' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_nuxtgooglemaps_6966bc78 from 'nuxt_plugin_nuxtgooglemaps_6966bc78' // Source: .\\nuxt-google-maps.js (mode: 'all')
+import nuxt_plugin_axios_71169a02 from 'nuxt_plugin_axios_71169a02' // Source: .\\axios.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -176,16 +176,16 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_4a853b90 === 'function') {
-    await nuxt_plugin_plugin_4a853b90(app.context, inject)
+  if (typeof nuxt_plugin_plugin_746d7498 === 'function') {
+    await nuxt_plugin_plugin_746d7498(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxtgooglemaps_18a8a570 === 'function') {
-    await nuxt_plugin_nuxtgooglemaps_18a8a570(app.context, inject)
+  if (typeof nuxt_plugin_nuxtgooglemaps_6966bc78 === 'function') {
+    await nuxt_plugin_nuxtgooglemaps_6966bc78(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_d16a95f2 === 'function') {
-    await nuxt_plugin_axios_d16a95f2(app.context, inject)
+  if (typeof nuxt_plugin_axios_71169a02 === 'function') {
+    await nuxt_plugin_axios_71169a02(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
