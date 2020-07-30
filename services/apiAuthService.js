@@ -20,9 +20,6 @@ export default class AuthService {
         });
     }
 
-    getBootcamps() {
-        return this.getBaseUrl().get("/bootcamps");
-    }
     getCourses() {
         return this.getBaseUrl().get("/courses");
     }
