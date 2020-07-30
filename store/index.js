@@ -9,9 +9,14 @@ export const state = () => ({
     bootcamp: {},
     courses: [],
     course: {},
+    users: [],
+    fetchedUser: [],
+    userById: [],
+    reviews: [],
     userToken: null,
     user: null,
-    notifications: []
+    notifications: [],
+    isLoading: false
 });
 let nextId = 1;
 export const mutations = {
@@ -26,6 +31,15 @@ export const mutations = {
     },
     SET_COURSE(state, course) {
         state.course = course;
+    },
+    SET_REVIEWS(state, reviews) {
+        state.reviews = reviews;
+    },
+    SET_USERS(state, users) {
+        state.users = users;
+    },
+    SET_USERBYID(state, userById) {
+        state.userById.push(userById);
     },
     SET_USER_UP(state, userData) {
         state.userToken = userData;
@@ -42,6 +56,9 @@ export const mutations = {
     SET_USER(state, userData) {
         state.user = userData;
     },
+    FETCH_USER(state, userData) {
+        state.fetchedUser = userData;
+    },
     PUSH(state, notification) {
         state.notifications.push({
             ...notification,
@@ -52,6 +69,12 @@ export const mutations = {
         state.notifications = state.notifications.filter(
             notification => notification.id !== notificationToRemove.id
         );
+    },
+    NEWPHOTO(state, photoName) {
+        state.photoName = photoName;
+    },
+    SET_LOADING(state, payload) {
+        state.isLoading = payload;
     }
 };
 export const actions = {
@@ -101,6 +124,20 @@ export const actions = {
                 dispatch("add", notification);
             });
     },
+    fetchUser({ commit, dispatch, state }, id) {
+        return apiService
+            .getUser(id)
+            .then(response => {
+                commit("FETCH_USER", response.data.data);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a problem fetching user: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
+    },
     fetchCourses({ commit, state }) {
         return new AuthService(state).getCourses().then(response => {
             commit("SET_COURSES", response.data.data);
@@ -145,9 +182,18 @@ export const actions = {
     logout({ commit }) {
         commit("CLEAR_USER_DATA");
     },
+    loadingON({ commit }) {
+        commit("SET_LOADING", true);
+    },
+    loadingOFF({ commit }) {
+        commit("SET_LOADING", false);
+    },
     addNewBootcamp({ commit, dispatch, state }, body) {
+        const address = `${body.street} ${body.buildingNumber}, ${body.city}, ${body.zipcode}, ${body.country}`;
+        let body2 = body;
+        body2.address = address;
         return new AuthService(state)
-            .addNewBootcamp(body)
+            .addNewBootcamp(body2)
             .then(() => {
                 const notification = {
                     type: "success",
@@ -164,13 +210,32 @@ export const actions = {
                 throw error;
             });
     },
-    updateBootcamp({ commit, dispatch, state }, bootcamp) {
+    updateBootcamp({ dispatch, state }, body) {
         return new AuthService(state)
-            .updateBootcamp(bootcamp, state.bootcamp.id)
+            .updateBootcamp(body, body.id)
             .then(() => {
                 const notification = {
                     type: "success",
                     message: `Your bootcamp has been successfully updated!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
+    updateUser({ dispatch, state }, user) {
+        return new AuthService(state)
+            .updateUser(user, user._id)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `Your Profile has been successfully updated!`
                 };
                 dispatch("add", notification);
             })
@@ -202,11 +267,167 @@ export const actions = {
                 throw error;
             });
     },
+    deleteUser({ commit, dispatch, state }, id) {
+        return new AuthService(state)
+            .deleteUser(id)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `The user has been successfully deleted!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
     add({ commit }, notification) {
         commit("PUSH", notification);
     },
     remove({ commit }, notificationToRemove) {
         commit("DELETE", notificationToRemove);
+    },
+    sendRecoveryEmail({ dispatch }, email) {
+        return apiService
+            .sendREmail(email)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `Email Sent`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a recovery problem: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
+    },
+    resetPassword({ dispatch }, { token, password }) {
+        return apiService
+            .sendRPassword(token, password)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `Your password has been successfully updated!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a recovery problem: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
+    },
+    newPhoto({ commit, dispatch, state }, body) {
+        return new AuthService(state)
+            .newPhoto(body.photo, body)
+            .then(res => {
+                commit("NEWPHOTO", res.data.data);
+                const notification = {
+                    type: "success",
+                    message: `Your Photo has been successfully uploaded!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
+    addReview({ dispatch, state }, body) {
+        return new AuthService(state)
+            .addReview(body, state.bootcamp.id)
+            .then(res => {
+                const notification = {
+                    type: "success",
+                    message: `Thank you! Your review has benn successfully commited!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
+    getReviews({ commit, dispatch, state }, id) {
+        return new AuthService(state)
+            .getReviews(id)
+            .then(response => {
+                commit("SET_REVIEWS", response.data.data);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a problem fetching reviews: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
+    },
+    getUsers({ commit, dispatch, state }) {
+        return new AuthService(state)
+            .getUsers()
+            .then(response => {
+                commit("SET_USERS", response.data.data);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a problem fetching users: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
+    },
+
+    getUserById({ commit, dispatch, state }, id) {
+        return new AuthService(state)
+            .getUserById(id)
+            .then(response => {
+                commit("SET_USERBYID", response.data.data);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `There was a problem fetching user: ${error.message}`
+                };
+                dispatch("add", notification);
+            });
+    },
+    registerUser({ dispatch, state }, user) {
+        return new AuthService(state)
+            .updateBootcamp(user, state.bootcamp.id)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `You're successfully registered!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
     }
 };
 export const getters = {
@@ -217,7 +438,10 @@ export const getters = {
         if (!state.user) {
             return;
         } else {
-            return state.user.name;
+            return state.user;
         }
+    },
+    getUsersById(state) {
+        return state.userById;
     }
 };

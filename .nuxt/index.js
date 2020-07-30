@@ -13,6 +13,7 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_plugin_746d7498 from 'nuxt_plugin_plugin_746d7498' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_moment_35cd3e79 from 'nuxt_plugin_moment_35cd3e79' // Source: .\\moment.js (mode: 'all')
 import nuxt_plugin_nuxtgooglemaps_6966bc78 from 'nuxt_plugin_nuxtgooglemaps_6966bc78' // Source: .\\nuxt-google-maps.js (mode: 'all')
 import nuxt_plugin_axios_71169a02 from 'nuxt_plugin_axios_71169a02' // Source: .\\axios.js (mode: 'all')
 
@@ -61,7 +62,7 @@ async function createApp (ssrContext) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"titleTemplate":"%s - devcamper","title":"devcamper","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My marvelous Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss2?family=Inter:wght@200&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
+    head: {"titleTemplate":"%s - devcamper","title":"devcamper","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My marvelous Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss2?family=Inter:wght@200&display=swap"},{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Fuse.fontawesome.com\u002Freleases\u002Fv5.0.13\u002Fcss\u002Fall.css"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:100,300,400,500,700,900&display=swap"},{"rel":"stylesheet","type":"text\u002Fcss","href":"https:\u002F\u002Fcdn.jsdelivr.net\u002Fnpm\u002F@mdi\u002Ffont@latest\u002Fcss\u002Fmaterialdesignicons.min.css"}],"style":[],"script":[]},
 
     store,
     router,
@@ -178,6 +179,10 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_plugin_746d7498 === 'function') {
     await nuxt_plugin_plugin_746d7498(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_moment_35cd3e79 === 'function') {
+    await nuxt_plugin_moment_35cd3e79(app.context, inject)
   }
 
   if (typeof nuxt_plugin_nuxtgooglemaps_6966bc78 === 'function') {

@@ -1,26 +1,62 @@
 <template>
-
-<nuxt-link :to="postLink">
-    <v-card
-    width="544"
-    height="150"
-    outlined
-    elevation
+  <v-card
+    height="100%"
+    elevation="22"
+    class="card-outter"
+    color="rgba(25,25,25,0.8)"
   >
-    <v-list-item>
+    <v-img
+      class="white--text align-end"
+      height="200px"
+      :src="bootcamp.imageUrl + bootcamp.photo"
+      gradient="to bottom left, rgba(0,0,0,.1), rgba(0,0,0,.8)"
+    >
+      <v-card-title>{{ bootcamp.name }}</v-card-title>
+    </v-img>
 
-      <v-list-item-content>
-        <v-list-item-title class="headline mb-1">{{ bootcamp.name }}</v-list-item-title>
-        <v-list-item-title class="card_item"> {{ bootcamp.description }}</v-list-item-title>
-      
-      </v-list-item-content>
+    <v-card-subtitle class="pb-0"
+      >Location: {{ bootcamp.location.city }}</v-card-subtitle
+    >
 
-    </v-list-item>
+    <v-card-text class="text--primary">
+      <v-rating
+        v-model="bootcamp.averageRating"
+        color="success"
+        half-increments
+        readonly
+        empty-icon
+        empty-icon="$ratingFull"
+      ></v-rating>
+      <p
+        v-if="
+          bootcamp.participants.length > 0 && bootcamp.participants.length !== 1
+        "
+        class="light-green--text text--accent-4"
+      >
+        <i class="fas fa-user-friends"></i>
+        {{ bootcamp.participants.length }} participants
+      </p>
+      <p
+        v-else-if="bootcamp.participants.length === 1"
+        class="orange--text text--accent-4"
+      >
+        <i class="fas fa-user-friends"></i>
+        {{ bootcamp.participants.length }} participant
+      </p>
+      <p v-else class="orange--text text--lighten-2">
+        No participants
+      </p>
+      <div>{{ bootcamp.description }}</div>
+    </v-card-text>
 
-
+    <v-card-actions class="card-actions">
+      <nuxt-link :to="postLink">
+        <v-btn color="success" text>
+          Explore
+        </v-btn>
+      </nuxt-link>
+    </v-card-actions>
   </v-card>
-  </nuxt-link>
-  </div>
 </template>
 
 <script>
@@ -37,12 +73,19 @@ export default {
 </script>
 
 <style scoped>
-
 a {
   color: white;
   text-decoration: none;
 }
-.card_item{
+.card_item {
   margin-bottom: 6px;
+}
+.card-outter {
+  position: relative;
+  padding-bottom: 50px;
+}
+.card-actions {
+  position: absolute;
+  bottom: 0;
 }
 </style>

@@ -1,7 +1,14 @@
 <template>
-  <div>
-    <BootcampForm :post="loadedBootcamp" @onSave="onSubmitting" />
-  </div>
+  <v-container>
+    <BootcampForm
+      class="card1"
+      @photo="photoUpload"
+      :isEdit="true"
+      :post="loadedBootcamp"
+      @onSave="onSubmitting"
+    />
+    <no-ssr />
+  </v-container>
 </template>
 
 <script>
@@ -13,11 +20,6 @@ export default {
   components: {
     BootcampForm
   },
-  // data() {
-  //   return {
-  //     loadedPost: null
-  //   };
-  // },
   asyncData(context) {
     return apiService.getBootcamp(context.params.bootcampId).then(res => {
       let edit = res.data.data;
@@ -32,12 +34,16 @@ export default {
   methods: {
     onSubmitting(formBody) {
       this.$store.dispatch("updateBootcamp", formBody).then(() => {
-        this.$router.push("/bootcamps");
+        this.$router.push("/bootcamps/" + this.loadedBootcamp.id);
+      });
+    },
+    photoUpload(photo) {
+      this.$store.dispatch("newPhoto", {
+        photo: photo,
+        id: this.loadedBootcamp.id,
+        as: "bootcamp"
       });
     }
-  },
-  created() {
-    console.log(this.loadedBootcamp);
   }
 };
 </script>

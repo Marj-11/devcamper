@@ -10,11 +10,14 @@ const apiClient = axios.create({
 });
 
 export default {
-    // getBootcamps() {
-    //     return apiClient.get("/bootcamps");
-    // },
+    getBootcamps() {
+        return apiClient.get("/bootcamps");
+    },
     getBootcamp(id) {
         return apiClient.get("/bootcamps/" + id);
+    },
+    getUser(id) {
+        return apiClient.get("/users/" + id);
     },
     getCourses() {
         return apiClient.get("/courses");
@@ -27,5 +30,11 @@ export default {
     },
     loginUser(body) {
         return apiClient.post("/auth/login", body);
+    },
+    sendREmail(email) {
+        return apiClient.post("/auth/forgotpassword", email);
+    },
+    sendRPassword(passwordToken, password) {
+        return apiClient.put(`/auth/resetpassword/${passwordToken}`, password);
     }
 };

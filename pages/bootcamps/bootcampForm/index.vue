@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <BootcampForm @onSave="onSubmitting" />
-  </div>
+  <v-container>
+    <BootcampForm class="card1" @onSave="onSubmitting" />
+  </v-container>
 </template>
 
 <script>
@@ -12,7 +12,9 @@ export default {
   },
   methods: {
     onSubmitting(formBody) {
-      this.$store.dispatch("addNewBootcamp", formBody);
+      this.$store.dispatch("addNewBootcamp", formBody).then(() => {
+        this.$router.push("/bootcamps");
+      });
     }
   }
 };

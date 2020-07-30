@@ -25,5 +25,47 @@
 
 a {
     text-decoration: none;
-    font-weight: bold;
+}
+
+.orange1 {
+    color: #EF6C00;
+}
+
+.vh {
+    height: 100vh;
+}
+
+.bold {
+    font-weight: 500px;
+}
+
+
+/* Form */
+
+.div {
+    position: relative;
+}
+
+.back {
+    background: rgba(0, 0, 0, 0.5);
+    filter: blur(6px);
+    position: absolute;
+    -webkit-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
+    width: 102%;
+    height: 100%;
+    margin-left: -15px;
+}
+
+.card1 {
+    width: 100%;
+}
+
+.card2 {
+    height: 100%;
+}
+
+.green1 {
+    background-color: rgb(0, 255, 13);
 }

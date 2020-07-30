@@ -1,107 +1,332 @@
 <template>
-  <div class="d-flex justify-center mt-10">
-    <v-card width="1044">
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="headline">{{
-            bootcamp.name
-          }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <div class="d-flex flex-wrap">
-        <v-img :src="bootcamp.photo" height="194" width="500"></v-img>
-        <v-card-text>
-          {{ bootcamp.description }}
-        </v-card-text>
-        <v-card-text
-          >Location:
-          {{ bootcamp.location.formattedAddress }}
-        </v-card-text>
-        <v-card-actions>
-          <v-btn class="success" text>
-            Register
-          </v-btn>
-          <v-btn class="warning" text @click="updateBootcamp">
-            Update
-          </v-btn>
-          <v-btn class="error" text @click="deleteBootcamp">
-            Delete
-          </v-btn>
-          <v-spacer></v-spacer>
-        </v-card-actions>
-      </div>
-    </v-card>
-    <!-- <GMap
-      id="map"
-      ref="gMap"
-      :cluster="{ options: { styles: clusterStyle } }"
-      :center="{ lat: locations[0].lat, lng: locations[0].lng }"
-      :options="{ fullscreenControl: false, styles: mapStyle }"
-      :zoom="6"
-    >
-      <GMapMarker
-        v-for="location in locations"
-        :key="location.id"
-        :position="{ lat: location.lat, lng: location.lng }"
-        :options="{
-          icon: location === currentLocation ? pins.selected : pins.notSelected
-        }"
-        @click="currentLocation = location"
-      >
-        <GMapInfoWindow>
-          <code> lat: {{ location.lat }}, lng: {{ location.lng }} </code>
-        </GMapInfoWindow>
-      </GMapMarker>
-      <GMapCircle :options="circleOptions" />
-    </GMap> -->
-  </div>
+  <v-container class="div">
+    <div class="backo"></div>
+    <v-row>
+      <v-col>
+        <v-row class="d-flex justify-center mb-5">
+          <h1>{{ bootcamp.name }}</h1>
+        </v-row>
+        <v-row justify="center">
+          <v-img height="30vh" :src="bootcamp.imageUrl + bootcamp.photo" />
+
+          <v-col cols="10">
+            <h3 class="text-center">
+              {{ bootcamp.description }}
+            </h3>
+          </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-col cols="12" class="text-center" md="3">
+            <div class="stars">
+              <a @click="dispatchReviews">
+                <v-rating
+                  v-model="bootcamp.averageRating"
+                  color="success"
+                  half-increments
+                  readonly
+                  empty-icon
+                  empty-icon="$ratingFull"
+                ></v-rating>
+              </a>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row :class="{ 'd-flex': $vuetify.breakpoint.smAndDown }">
+          <v-col
+            cols="12"
+            md="6"
+            :class="{ 'order-2': $vuetify.breakpoint.smAndDown }"
+          >
+            <GMap
+              id="map"
+              ref="gMap"
+              :center="{
+                lat: this.currentLocation[1],
+                lng: this.currentLocation[0]
+              }"
+              :options="{ fullscreenControl: true, styles: mapStyle }"
+              :zoom="15"
+              :mapStyle="mapStyle"
+            >
+              <GMapMarker
+                :position="{
+                  lat: this.currentLocation[1],
+                  lng: this.currentLocation[0]
+                }"
+              >
+                <GMapInfoWindow>
+                  <code>
+                    lat: {{ this.currentLocation[1] }}, lng:
+                    {{ this.currentLocation[0] }}
+                  </code>
+                </GMapInfoWindow>
+              </GMapMarker>
+              <GMapCircle :options="circleOptions" />
+            </GMap>
+            <p class="white--text mb-1 mt-1">
+              <i
+                class="light-green--text text--accent-3 fas fa-location-arrow"
+              ></i>
+
+              {{
+                `${bootcamp.location.street}, ${bootcamp.location.city} ${bootcamp.location.zipcode}, ${bootcamp.location.country}`
+              }}
+            </p>
+            <hr class="style-two" />
+            <div class="mb-1 mt-1">
+              <a :href="bootcamp.website" target="_blank" class="white--text ">
+                <i class="light-green--text text--accent-3 fas fa-globe"></i>
+                {{ web(bootcamp.website) }}
+              </a>
+            </div>
+            <hr class="style-two" />
+            <div class="mb-1 mt-1">
+              <a
+                :href="`mailto:${bootcamp.email}`"
+                class="white--text mb-1 mt-1"
+              >
+                <i class="light-green--text text--accent-3 fas fa-envelope"></i>
+
+                {{ bootcamp.email }}
+              </a>
+            </div>
+            <hr class="style-two" />
+            <p class="white--text mb-1 mt-1">
+              <i class="light-green--text text--accent-3 fas fa-phone"></i>
+
+              {{ bootcamp.phone }}
+            </p>
+            <hr class="style-two" />
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+            :class="{ 'order-1': $vuetify.breakpoint.smAndDown }"
+          >
+            <h3 v-if="bootcamp.careers.length > 1" class="text-center">
+              With this Bootcamp you will be able to work in any following
+              fields:
+
+              <p class="orange--text text--darken-1 mt-8">
+                {{ bootcamp.careers.join(", ") }}
+              </p>
+            </h3>
+            <h3 class="mt-8 text-center">
+              {{
+                paragraph(
+                  bootcamp.housing,
+                  bootcamp.jobAssistance,
+                  bootcamp.jobGuarantee,
+                  bootcamp.acceptGi
+                )
+              }}
+            </h3>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+    <v-row justify="center" class="mb-12">
+      <v-btn class="success--text mr-3" outlined @click="registerUser">
+        Register
+      </v-btn>
+      <v-btn class="warning--text mr-3" outlined @click="updateBootcamp">
+        Update
+      </v-btn>
+      <v-btn class="error--text mr-3 del" outlined @click="compDialog">
+        Delete
+      </v-btn>
+    </v-row>
+    <v-row justify="center">
+      <Alert :dialog="dialog" @no="no" @yes="yes" />
+    </v-row>
+  </v-container>
 </template>
 <script>
 import apiService from "@/services/apiService.js";
+import Alert from "@/components/UI/Alert.vue";
 import { mapState } from "vuex";
 export default {
-  // data() {
-  //   return {
-  //     currentLocation: {
-  //       lat: 48.2,
-  //       lng: 16.35
-  //     },
-  //     circleOptions: {},
-  //     locations: [
-  //       {
-  //         lat: 44.933076,
-  //         lng: 15.629058
-  //       },
-  //       {
-  //         lat: 45.81444,
-  //         lng: 15.97798,
-  //         name: "Zagreb"
-  //       },
-  //       {
-  //         lat: 45.815,
-  //         lng: "15.9819"
-  //       },
-  //       {
-  //         lat: "45.12",
-  //         lng: "16.21"
-  //       }
-  //     ],
-  //     pins: {
-  //       selected: "data:image/png;base64,iVBORw0KGgo...",
-  //       notSelected: "data:image/png;base64,iVBORw0KGgo..."
-  //     },
-  //     mapStyle: [],
-  //     clusterStyle: [
-  //       {
-  //         url:
-  //           "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m1.png",
-  //         width: 25,
-  //         height: 16,
-  //         textColor: "#fff"
-  //       }
-  //     ]
-  //   };
-  // },
+  components: {
+    Alert
+  },
+  data() {
+    return {
+      dialog: false,
+      circleOptions: {},
+      locations: [
+        {
+          lat: 44.933076,
+          lng: 15.629058
+        }
+      ],
+      pins: {
+        selected: "data:image/png;base64,iVBORw0KGgo...",
+        notSelected: "data:image/png;base64,iVBORw0KGgo..."
+      },
+
+      mapStyle: [
+        {
+          elementType: "geometry",
+          stylers: [
+            {
+              color: "#242f3e"
+            }
+          ]
+        },
+        {
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#746855"
+            }
+          ]
+        },
+        {
+          elementType: "labels.text.stroke",
+          stylers: [
+            {
+              color: "#242f3e"
+            }
+          ]
+        },
+        {
+          featureType: "administrative.locality",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#d59563"
+            }
+          ]
+        },
+        {
+          featureType: "poi",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#d59563"
+            }
+          ]
+        },
+        {
+          featureType: "poi.park",
+          elementType: "geometry",
+          stylers: [
+            {
+              color: "#263c3f"
+            }
+          ]
+        },
+        {
+          featureType: "poi.park",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#6b9a76"
+            }
+          ]
+        },
+        {
+          featureType: "road",
+          elementType: "geometry",
+          stylers: [
+            {
+              color: "#38414e"
+            }
+          ]
+        },
+        {
+          featureType: "road",
+          elementType: "geometry.stroke",
+          stylers: [
+            {
+              color: "#212a37"
+            }
+          ]
+        },
+        {
+          featureType: "road",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#9ca5b3"
+            }
+          ]
+        },
+        {
+          featureType: "road.highway",
+          elementType: "geometry",
+          stylers: [
+            {
+              color: "#746855"
+            }
+          ]
+        },
+        {
+          featureType: "road.highway",
+          elementType: "geometry.stroke",
+          stylers: [
+            {
+              color: "#1f2835"
+            }
+          ]
+        },
+        {
+          featureType: "road.highway",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#f3d19c"
+            }
+          ]
+        },
+        {
+          featureType: "transit",
+          elementType: "geometry",
+          stylers: [
+            {
+              color: "#2f3948"
+            }
+          ]
+        },
+        {
+          featureType: "transit.station",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#d59563"
+            }
+          ]
+        },
+        {
+          featureType: "water",
+          elementType: "geometry",
+          stylers: [
+            {
+              color: "#17263c"
+            }
+          ]
+        },
+        {
+          featureType: "water",
+          elementType: "labels.text.fill",
+          stylers: [
+            {
+              color: "#515c6d"
+            }
+          ]
+        },
+        {
+          featureType: "water",
+          elementType: "labels.text.stroke",
+          stylers: [
+            {
+              color: "#17263c"
+            }
+          ]
+        }
+      ]
+    };
+  },
 
   async fetch({ store, error, params }) {
     try {
@@ -110,23 +335,97 @@ export default {
   },
   computed: mapState({
     // state => state.bootcamp
-    bootcamp: ["bootcamp"]
+    bootcamp: ["bootcamp"],
+    user: ["user"],
+    currentLocation() {
+      return this.bootcamp.location.coordinates;
+    }
   }),
+
   methods: {
-    deleteBootcamp() {
+    compDialog() {
+      this.dialog = true;
+    },
+    no() {
+      this.dialog = false;
+    },
+    yes() {
       this.$store.dispatch("deleteBootcamp", this.bootcamp.id).then(() => {
         this.$router.push("/bootcamps");
       });
+      this.dialog = false;
     },
+
     updateBootcamp() {
       this.$router.push("/editBootcamps/" + this.bootcamp.id);
+    },
+    dispatchReviews() {
+      this.$router.push("/reviews/" + this.bootcamp.id);
+    },
+    registerUser() {
+      this.$store.dispatch("registerUser", { participants: this.user._id });
+    },
+    web(web) {
+      const word = web.slice(8);
+      return "www." + word;
+    },
+    paragraph(H, A, G, AC) {
+      const housing =
+        H === true
+          ? "Of course we have a dorm for the students and it's located in the city center with a nice view"
+          : "Unfortunately we don't offer housing for the students";
+      const assistance =
+        A === true
+          ? "And after the Bootcamp is finished, it is our pleasure to help the students finding a new job"
+          : "Du to the current situation we cannot help the student to find a new Job";
+      const guarantee =
+        G === true
+          ? "If you registered in our bootcamp then the new Job is 100% is waiting for you"
+          : "We don't guarantee a job opportunity";
+      const generalIssues =
+        AC === true
+          ? "If you have a general Issues we can accept you as a student in our bootcamp"
+          : "If you have a general Issues we sadly cannot accept you as a student in our bootcamp";
+      const arr = [housing, assistance, guarantee, generalIssues];
+      return arr.join(". ");
     }
   }
 };
 </script>
 
 <style scoped>
-#map {
-  width: 400px;
+hr.style-two {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0)
+  );
+}
+li {
+  list-style: none;
+}
+.backo {
+  background: rgba(0, 0, 0, 0.4);
+  filter: blur(6px);
+  position: absolute;
+  -webkit-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
+  width: 112%;
+  height: 97%;
+  margin-left: -65px;
+  z-index: -1000;
+}
+@media (max-width: 337px) {
+  .del {
+    margin-top: 8px;
+  }
+}
+.stars {
+  background-color: rgb(65, 65, 65);
+  border-radius: 5px;
 }
 </style>

@@ -22,13 +22,18 @@ export default {
             {
                 rel: "stylesheet",
                 href: "https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap"
+            },
+            { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+            {
+                rel: "stylesheet",
+                href: "https://use.fontawesome.com/releases/v5.0.13/css/all.css"
             }
         ]
     },
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: "#fff" },
+    loading: { color: "success" },
     /*
      ** Global CSS
      */
@@ -52,7 +57,8 @@ export default {
                 key: "AIzaSyB45-ufkKg86KIq5z5MjFA2Hs1eNmVKR9U"
                     //you can use libraries: ['places']
             }
-        ]
+        ],
+        "nuxt-moment"
     ],
     /*
      ** Axios module configuration
