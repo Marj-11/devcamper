@@ -11,6 +11,7 @@ export default class AuthService {
     getBaseUrl() {
         return axios.create({
             baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
+            // baseURL: `http://localhost:5000/api/v1`,
             withCredentials: false, // This is the default
             headers: {
                 Accept: "application/json",
@@ -20,6 +21,9 @@ export default class AuthService {
         });
     }
 
+    getBootcamps() {
+        return this.getBaseUrl().get("/bootcamps");
+    }
     getCourses() {
         return this.getBaseUrl().get("/courses");
     }

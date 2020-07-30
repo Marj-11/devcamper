@@ -50,7 +50,7 @@
         >
       </div>
     </v-toolbar>
-    <v-navigation-drawer class="drawer" color="rgb(25,25,25)" app v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-if="user" class="drawer" color="rgb(25,25,25)" app v-model="drawer" absolute temporary>
       <v-list dense nav class="py-0">
         <v-list-item two-line :class="'px-0'">
           <v-list-item-avatar>
