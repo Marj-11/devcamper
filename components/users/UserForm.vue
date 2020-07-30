@@ -19,6 +19,9 @@
           <v-btn outlined class="success--text ma-2" @click="onSave"
             >save</v-btn
           >
+          <nuxt-link :to="link"
+            ><v-btn class="warning--text" outlined>cancel</v-btn></nuxt-link
+          >
         </v-card-actions>
       </v-col>
     </v-row>
@@ -67,6 +70,11 @@ export default {
     },
     photo() {
       this.$emit("photo", this.editedPost.file);
+    }
+  },
+  computed: {
+    link() {
+      return "/users/" + this.post._id;
     }
   }
 };

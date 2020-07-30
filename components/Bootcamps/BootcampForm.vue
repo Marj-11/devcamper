@@ -75,7 +75,10 @@
       </v-row>
 
       <v-row justify="end" class="mt-5">
-        <v-btn class="success--text" outlined @click="onSave">save</v-btn>
+        <nuxt-link :to="link"
+          ><v-btn class="warning--text" outlined>cancel</v-btn></nuxt-link
+        >
+        <v-btn class="success--text ml-4" outlined @click="onSave">save</v-btn>
       </v-row>
     </v-col>
   </v-row>
@@ -136,6 +139,13 @@ export default {
   computed: {
     isLoading() {
       return true;
+    },
+    link() {
+      if (this.isEdit) {
+        return "/bootcamps/" + this.post.id;
+      } else {
+        return "/bootcamps";
+      }
     }
   }
 };

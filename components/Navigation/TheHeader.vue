@@ -50,7 +50,15 @@
         >
       </div>
     </v-toolbar>
-    <v-navigation-drawer v-if="user" class="drawer" color="rgb(25,25,25)" app v-model="drawer" absolute temporary>
+    <v-navigation-drawer
+      v-if="user"
+      class="drawer"
+      color="rgb(25,25,25)"
+      app
+      v-model="drawer"
+      absolute
+      temporary
+    >
       <v-list dense nav class="py-0">
         <v-list-item two-line :class="'px-0'">
           <v-list-item-avatar>
@@ -70,8 +78,6 @@
         </v-list-item>
 
         <v-divider></v-divider>
-
-        
       </v-list>
       <v-row justify="center">
         <nuxt-link class="link" to="/"
@@ -80,14 +86,15 @@
           </h1></nuxt-link
         >
       </v-row>
-      <v-list-item>
+      <v-list>
+        <v-list-item>
           <v-list-item-icon>
             <v-icon class="green2">mdi-help-box</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
             <nuxt-link class="d-flex" to="/about-us">
-            <v-list-item-title>About Us</v-list-item-title>
+              <v-list-item-title>About Us</v-list-item-title>
             </nuxt-link>
           </v-list-item-content>
         </v-list-item>
@@ -98,10 +105,30 @@
 
           <v-list-item-content>
             <nuxt-link class="d-flex" to="/bootcamps">
-            <v-list-item-title>Bootcamps</v-list-item-title>
+              <v-list-item-title>Bootcamps</v-list-item-title>
             </nuxt-link>
           </v-list-item-content>
         </v-list-item>
+
+        <v-row justify="center" class="mt-12">
+          <nuxt-link v-if="!loggedIn" to="/signup"
+            ><v-btn class="ma-2 yellow--text" outlined
+              >Sign up</v-btn
+            ></nuxt-link
+          >
+
+          <nuxt-link v-if="!loggedIn" to="/login">
+            <v-btn class="ma-2 success--text" outlined>Login</v-btn></nuxt-link
+          >
+
+          <v-btn
+            v-if="loggedIn"
+            @click="logout"
+            class="ma-2 orange--text"
+            outlined
+            >Logout</v-btn
+          >
+        </v-row>
       </v-list>
     </v-navigation-drawer>
   </div>
@@ -153,7 +180,7 @@ export default {
 </script>
 
 <style scoped>
-.drawer{
+.drawer {
   z-index: 10000;
 }
 .logo:hover {
@@ -176,7 +203,7 @@ a:hover {
 .user {
   font-size: 13px;
 }
-.green2{
-    color: rgb(0, 255, 13);
+.green2 {
+  color: rgb(0, 255, 13);
 }
 </style>
