@@ -5,7 +5,6 @@ const env =
     process.env.EXTERNAL_SERVER_URL :
     process.env.INTERNAL_SERVER_URL;
 const apiClient = axios.create({
-    // baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
     baseURL: env,
     withCredentials: false, // This is the default
     headers: {

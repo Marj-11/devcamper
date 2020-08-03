@@ -150,7 +150,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {"NODE_ENV":"development","INTERNAL_SERVER_URL":"http://localhost:5000/api/v1","EXTERNAL_SERVER_URL":"https://devcamper-backend.herokuapp.com"}
+      env: {"NODE_ENV":"development","INTERNAL_SERVER_URL":"http://localhost:5000/api/v1","EXTERNAL_SERVER_URL":"https://devcamper-backend.herokuapp.com/api/v1"}
     }
     // Only set once
     if (context.req) {
