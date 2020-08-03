@@ -93,7 +93,6 @@ export default {
         process.env.NODE_ENV === "production"
           ? process.env.EXTERNAL_SERVER_URL
           : process.env.INTERNAL_SERVER_URL;
-      console.log(env);
       const url = `${env}/users/${this.editedPost._id}/photo`;
       let formData = new FormData();
       formData.append("file", file);

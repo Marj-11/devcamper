@@ -5,7 +5,7 @@
     "author": "Marj-11",
     "private": true,
     "scripts": {
-        "dev": "nuxt",
+        "dev": "SET NODE_ENV=development & nuxt",
         "start": "nuxt start"
     },
     "engines": {

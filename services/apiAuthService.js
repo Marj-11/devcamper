@@ -9,9 +9,14 @@ export default class AuthService {
     }
 
     getBaseUrl() {
+        const env =
+            process.env.NODE_ENV === "production" ?
+            process.env.EXTERNAL_SERVER_URL :
+            process.env.INTERNAL_SERVER_URL;
         return axios.create({
             // baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
-            baseURL: `http://localhost:5000/api/v1`,
+
+            baseURL: env,
             withCredentials: false, // This is the default
             headers: {
                 Accept: "application/json",
