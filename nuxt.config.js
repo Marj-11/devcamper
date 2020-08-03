@@ -1,5 +1,5 @@
 import colors from "vuetify/es5/util/colors";
-
+require("dotenv").config();
 export default {
     mode: "universal",
     /*
@@ -30,6 +30,7 @@ export default {
             }
         ]
     },
+
     /*
      ** Customize the progress-bar color
      */
@@ -58,7 +59,8 @@ export default {
                     //you can use libraries: ['places']
             }
         ],
-        "nuxt-moment"
+        "nuxt-moment",
+        "@nuxtjs/dotenv"
     ],
     /*
      ** Axios module configuration

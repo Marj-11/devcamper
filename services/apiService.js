@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
-    // baseURL: `http://localhost:5000/api/v1`,
+    // baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
+    baseURL: `http://localhost:5000/api/v1`,
     withCredentials: false, // This is the default
     headers: {
         Accept: "application/json",

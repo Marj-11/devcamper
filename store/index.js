@@ -328,26 +328,25 @@ export const actions = {
                 dispatch("add", notification);
             });
     },
-    newPhoto({ commit, dispatch, state }, body) {
-        return new AuthService(state)
-            .newPhoto(body.photo, body)
-            .then(res => {
-                commit("NEWPHOTO", res.data.data);
-                const notification = {
-                    type: "success",
-                    message: `Your Photo has been successfully uploaded!`
-                };
-                dispatch("add", notification);
-            })
-            .catch(error => {
-                const notification = {
-                    type: "error",
-                    message: `${error.response.data.error}`
-                };
-                dispatch("add", notification);
-                throw error;
-            });
-    },
+    // newPhoto({ commit, dispatch, state }, body) {
+    //     return new AuthService(state).newPhoto(body.photo, body)
+    //     .then(res => {
+    //         commit("NEWPHOTO", res.data.data);
+    //         const notification = {
+    //             type: "success",
+    //             message: `Your Photo has been successfully uploaded!`
+    //         };
+    //         dispatch("add", notification);
+    //     })
+    //     .catch(error => {
+    //         const notification = {
+    //             type: "error",
+    //             message: `${error.response.data.error}`
+    //         };
+    //         dispatch("add", notification);
+    //         throw error;
+    //     })
+    // },
     addReview({ dispatch, state }, body) {
         return new AuthService(state)
             .addReview(body, state.bootcamp.id)

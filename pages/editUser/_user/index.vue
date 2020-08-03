@@ -13,16 +13,20 @@
 <script>
 import UserForm from "@/components/users/UserForm.vue";
 import apiService from "@/services/apiService.js";
-// import { mapState } from "vuex";
 
 export default {
   components: {
     UserForm
   },
-  data() {
-    return {
-      loadedUser: this.$store.state.fetchedUser
-    };
+
+  asyncData(context) {
+    return apiService.getUser(context.params.user).then(res => {
+      let user = res.data.data;
+
+      return {
+        loadedUser: user
+      };
+    });
   },
 
   methods: {

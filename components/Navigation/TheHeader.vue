@@ -175,6 +175,9 @@ export default {
         .join("");
       return init;
     }
+  },
+  mounted() {
+    console.log(this.user.imageUrl + this.user.photo);
   }
 };
 </script>

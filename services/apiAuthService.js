@@ -10,8 +10,8 @@ export default class AuthService {
 
     getBaseUrl() {
         return axios.create({
-            baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
-            // baseURL: `http://localhost:5000/api/v1`,
+            // baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
+            baseURL: `http://localhost:5000/api/v1`,
             withCredentials: false, // This is the default
             headers: {
                 Accept: "application/json",
@@ -45,18 +45,7 @@ export default class AuthService {
     deleteUser(id) {
         return this.getBaseUrl().delete("/users/" + id);
     }
-    newPhoto(body, body2) {
-        let formData = new FormData();
-        formData.append("file", body);
-        if (body2.as === "bootcamp") {
-            return this.getBaseUrl().put(
-                "/bootcamps/" + body2.id + "/photo",
-                formData
-            );
-        } else {
-            return this.getBaseUrl().put("/users/" + body2.id + "/photo", formData);
-        }
-    }
+
     addReview(body, id) {
         return this.getBaseUrl().post("/bootcamps/" + id + "/reviews", body);
     }
