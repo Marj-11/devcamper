@@ -12,7 +12,8 @@
       <v-form ref="form" v-model="valid" lazy-validation>
         <div class="d-flex justify-center" @click="starRules = false">
           <v-rating
-            color="success"
+            color="orange"
+            background-color="grey darken-2"
             half-increments
             v-model="rate"
             empty-icon
@@ -93,6 +94,9 @@ export default {
           text: this.text
         };
         this.$store.dispatch("addReview", review);
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       }
       this.$refs.form.validate();
     }

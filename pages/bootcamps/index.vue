@@ -2,13 +2,13 @@
   <div>
     <v-container>
       <v-row class="d-flex justify-center">
-        <h1 class="white--text">Our Bootcamps</h1>
+        <h1>Our Bootcamps</h1>
       </v-row>
 
       <v-row>
-        <v-col class="d-flex justify-center">
+        <v-col class="d-flex justify-end">
           <nuxt-link to="/bootcamps/bootcampForm">
-            <v-btn color="light-green accent-4">
+            <v-btn v-if="rightTo" color="orange white--text">
               <v-icon>mdi-plus</v-icon>&nbsp; Add Bootcamp
             </v-btn>
           </nuxt-link>
@@ -42,7 +42,13 @@ export default {
   },
 
   computed: mapState({
-    bootcamps: state => state.bootcamps
+    bootcamps: state => state.bootcamps,
+    user: state => state.user,
+    rightTo() {
+      if (this.user.role === "admin" || this.user.role === "publisher") {
+        return true;
+      }
+    }
   })
 };
 </script>

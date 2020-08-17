@@ -4,16 +4,16 @@
       <v-row class="vh" justify="center">
         <v-col cols="8">
           <v-row justify="center" class="mt-12">
-            <h1 class="white--text text-center">
+            <h1 class=" text-center">
               Welcome to our Bootcamps <br />
               The ultimate learning resource for programmers
             </h1>
           </v-row>
           <v-row justify="center">
-            <h4 class="mt-5" v-if="!loggedIn">
+            <h4 class="mt-5 " v-if="!loggedIn">
               To use this app you need to&nbsp;
               <nuxt-link class="success--text" to="/login">Login</nuxt-link
-              >&nbsp;or&nbsp;
+              >&nbsp;&nbsp;or&nbsp;
               <nuxt-link class="yellow--text" to="/signup">Sign Up</nuxt-link>
             </h4>
           </v-row>
@@ -44,7 +44,11 @@
               :key="i"
               :src="`${bootcamp.imageUrl}${bootcamp.photo}`"
             >
-              <v-row class="fill-height" align="start" justify="center">
+              <v-row
+                class="fill-height white--text"
+                align="start"
+                justify="center"
+              >
                 <div
                   class="display-3"
                   :class="{
@@ -132,8 +136,8 @@ a {
   width: 55px;
   min-height: 55px;
   top: 23%;
-  border-bottom: 2px solid rgb(0, 255, 13);
-  border-right: 2px solid rgb(0, 255, 13);
+  border-bottom: 2px solid var(--text-color);
+  border-right: 2px solid var(--text-color);
   border-radius: 1px;
   transform: translate(-50%, 0%) rotate(45deg);
   -webkit-animation: fade_move_down 3s ease-in-out infinite;

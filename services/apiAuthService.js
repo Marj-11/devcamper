@@ -14,8 +14,6 @@ export default class AuthService {
             process.env.EXTERNAL_SERVER_URL :
             process.env.INTERNAL_SERVER_URL;
         return axios.create({
-            // baseURL: `https://devcamper-backend.herokuapp.com/api/v1`,
-
             baseURL: env,
             withCredentials: false, // This is the default
             headers: {
@@ -25,7 +23,6 @@ export default class AuthService {
             }
         });
     }
-
     getBootcamps() {
         return this.getBaseUrl().get("/bootcamps");
     }
@@ -39,6 +36,9 @@ export default class AuthService {
         return this.getBaseUrl().post("/bootcamps", body);
     }
     updateBootcamp(body, id) {
+        return this.getBaseUrl().put("/bootcamps/" + id, body);
+    }
+    deRegisterUser(body, id) {
         return this.getBaseUrl().put("/bootcamps/" + id, body);
     }
     updateUser(body, id) {

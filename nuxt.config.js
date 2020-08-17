@@ -80,14 +80,15 @@ export default {
         theme: {
             dark: true,
             themes: {
+                light: {
+                    anchor: "#000",
+                    secondary: "#424242",
+                    accent: "#fff"
+                },
                 dark: {
-                    primary: colors.blue.darken2,
-                    accent: colors.grey.darken3,
-                    secondary: colors.amber.darken3,
-                    info: colors.teal.lighten1,
-                    warning: colors.amber.base,
-                    error: colors.deepOrange.accent4,
-                    success: colors.green.accent3
+                    anchor: "#fff",
+                    secondary: "#fff",
+                    accent: "#000"
                 }
             }
         }

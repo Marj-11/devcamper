@@ -6,10 +6,10 @@
       </v-row>
     </v-row>
     <v-row justify="center">
-      <v-avatar tile width="150" height="150" class="mr-3" color="warning">
+      <v-avatar tile width="150" height="150" color="grey darken-3">
         <span
           v-if="fetchedUser.photo === 'no-user-photo.jpg'"
-          class="white--text headline"
+          class="white--text display-4"
           >{{ initials(fetchedUser.name) }}</span
         >
         <img v-else :src="fetchedUser.imageUrl + fetchedUser.photo" />
@@ -17,10 +17,15 @@
     </v-row>
     <br />
     <v-row class="d-flex justify-center mt-8">
-      <v-btn class="warning--text mr-3" outlined @click="updateUser">
+      <v-btn
+        v-if="rightTo"
+        class="warning--text mr-3"
+        outlined
+        @click="updateUser"
+      >
         Update
       </v-btn>
-      <v-btn class="error--text mr-3" outlined @click="compDialog">
+      <v-btn v-if="rightTo" class="error--text " outlined @click="compDialog">
         Delete
       </v-btn>
     </v-row>
@@ -49,7 +54,13 @@ export default {
   },
   computed: mapState({
     // state => state.bootcamp
-    fetchedUser: ["fetchedUser"]
+    fetchedUser: ["fetchedUser"],
+    user: ["user"],
+    rightTo() {
+      if (this.fetchedUser._id === this.user._id) {
+        return true;
+      }
+    }
   }),
   methods: {
     compDialog() {

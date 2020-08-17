@@ -143,7 +143,7 @@ export async function setContext (app, context) {
   if (!app.context) {
     app.context = {
       isStatic: process.static,
-      isDev: false,
+      isDev: true,
       isHMR: false,
       app,
       store: app.store,
@@ -153,10 +153,10 @@ export async function setContext (app, context) {
       env: {"INTERNAL_SERVER_URL":"http://localhost:5000/api/v1","EXTERNAL_SERVER_URL":"https://devcamper-backend.herokuapp.com/api/v1"}
     }
     // Only set once
-    if (context.req) {
+    if (!process.static && context.req) {
       app.context.req = context.req
     }
-    if (context.res) {
+    if (!process.static && context.res) {
       app.context.res = context.res
     }
     if (context.ssrContext) {
@@ -227,7 +227,7 @@ export async function setContext (app, context) {
   app.context.next = context.next
   app.context._redirected = false
   app.context._errored = false
-  app.context.isHMR = false
+  app.context.isHMR = Boolean(context.isHMR)
   app.context.params = app.context.route.params || {}
   app.context.query = app.context.route.query || {}
 }
@@ -245,6 +245,9 @@ export function middlewareSeries (promises, appContext) {
 export function promisify (fn, context) {
   let promise
   if (fn.length === 2) {
+      console.warn('Callback-based asyncData, fetch or middleware calls are deprecated. ' +
+        'Please switch to promises or async/await syntax')
+
     // fn(context, callback)
     promise = new Promise((resolve) => {
       fn(context, function (err, data) {
@@ -271,7 +274,8 @@ export function getLocation (base, mode) {
   if (mode === 'hash') {
     return window.location.hash.replace(/^#\//, '')
   }
-  if (base && path.indexOf(base) === 0) {
+  // To get matched with sanitized router.base add trailing slash
+  if (base && (path.endsWith('/') ? path : path + '/').startsWith(base)) {
     path = path.slice(base.length)
   }
   return (path || '/') + window.location.search + window.location.hash
@@ -567,7 +571,11 @@ function formatUrl (url, query) {
   let parts = url.split('/')
   let result = (protocol ? protocol + '://' : '//') + parts.shift()
 
-  let path = parts.filter(Boolean).join('/')
+  let path = parts.join('/')
+  if (path === '' && parts.length === 1) {
+    result += '/'
+  }
+
   let hash
   parts = path.split('#')
   if (parts.length === 2) {
@@ -610,4 +618,20 @@ export function addLifecycleHook(vm, hook, fn) {
   if (!vm.$options[hook].includes(fn)) {
     vm.$options[hook].push(fn)
   }
+}
+
+export function urlJoin () {
+  return [].slice
+    .call(arguments)
+    .join('/')
+    .replace(/\/+/g, '/')
+    .replace(':/', '://')
+}
+
+export function stripTrailingSlash (path) {
+  return path.replace(/\/+$/, '') || '/'
+}
+
+export function isSamePath (p1, p2) {
+  return stripTrailingSlash(p1) === stripTrailingSlash(p2)
 }

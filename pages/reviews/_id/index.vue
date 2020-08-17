@@ -6,7 +6,7 @@
         <h3 class="warning--text">Reviews</h3>
       </v-row>
       <v-row v-else justify="center" class="mt-10">
-        <h1 class="there white--text">There are no reviews!</h1>
+        <h1 class="there">There are no reviews!</h1>
       </v-row>
       <br />
       <br />
@@ -36,16 +36,17 @@
             <v-rating
               v-model="user.rating"
               color="orange"
+              background-color="grey darken-2"
               class="mb-2 mr-1"
               half-increments
               readonly
               empty-icon
               empty-icon="$ratingFull"
             ></v-rating>
-            <p class="pa-2 mb-0 time">{{ revDate(user.createdAt) }}</p>
+            <p class="pa-2 mb-0">{{ revDate(user.createdAt) }}</p>
           </v-row>
           <v-row :class="{ 'justify-center': $vuetify.breakpoint.smAndDown }"
-            ><h4 class="mb-2">{{ user.title }}</h4>
+            ><h4 class="mb-2 ml-3">{{ user.title }}</h4>
           </v-row>
           <v-row
             :class="{
@@ -131,17 +132,9 @@ hr.style-two {
   background-image: linear-gradient(
     to right,
     rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.75),
+    rgba(128, 128, 128, 0.75),
     rgba(255, 255, 255, 0)
   );
-}
-.time {
-  color: rgb(204, 204, 204);
-  font-size: 14px;
-}
-a {
-  color: white;
-  text-decoration: none;
 }
 a:hover {
   color: #d57900;

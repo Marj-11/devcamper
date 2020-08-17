@@ -16,7 +16,8 @@ export const state = () => ({
     userToken: null,
     user: null,
     notifications: [],
-    isLoading: false
+    isLoading: false,
+    track: 0
 });
 let nextId = 1;
 export const mutations = {
@@ -75,6 +76,9 @@ export const mutations = {
     },
     SET_LOADING(state, payload) {
         state.isLoading = payload;
+    },
+    SET_TRACK(state, data) {
+        state.track = data;
     }
 };
 export const actions = {
@@ -188,6 +192,7 @@ export const actions = {
     loadingOFF({ commit }) {
         commit("SET_LOADING", false);
     },
+
     addNewBootcamp({ commit, dispatch, state }, body) {
         const address = `${body.street} ${body.buildingNumber}, ${body.city}, ${body.zipcode}, ${body.country}`;
         let body2 = body;
@@ -328,25 +333,61 @@ export const actions = {
                 dispatch("add", notification);
             });
     },
-    // newPhoto({ commit, dispatch, state }, body) {
-    //     return new AuthService(state).newPhoto(body.photo, body)
-    //     .then(res => {
-    //         commit("NEWPHOTO", res.data.data);
-    //         const notification = {
-    //             type: "success",
-    //             message: `Your Photo has been successfully uploaded!`
-    //         };
-    //         dispatch("add", notification);
-    //     })
-    //     .catch(error => {
-    //         const notification = {
-    //             type: "error",
-    //             message: `${error.response.data.error}`
-    //         };
-    //         dispatch("add", notification);
-    //         throw error;
-    //     })
-    // },
+
+    newPhoto({ dispatch }, arr) {
+        dispatch("newPhoto2", arr)
+            .then(res => {
+                const notification = {
+                    type: "success",
+                    message: `Your Photo has been successfully uploaded!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
+    },
+    newPhoto2({ commit, state }, arr) {
+        const files = arr[0].target.files;
+        let file = files[0];
+        console.log(file);
+        const type = arr[1].hasOwnProperty("role") ? "users" : "bootcamps";
+        const id = arr[1]._id;
+
+        const config = {
+            onUploadProgress: function(progressEvent) {
+                var percentCompleted = Math.round(
+                    (progressEvent.loaded * 100) / progressEvent.total
+                );
+                commit("SET_TRACK", percentCompleted);
+            }
+        };
+        let data = new FormData();
+        data.append("file", file);
+
+        function getBaseUrl() {
+            const env =
+                process.env.NODE_ENV === "production" ?
+                process.env.EXTERNAL_SERVER_URL :
+                process.env.INTERNAL_SERVER_URL;
+            return axios.create({
+                baseURL: env,
+                withCredentials: false, // This is the default
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${state.userToken}`
+                }
+            });
+        }
+        return getBaseUrl().put(`/${type}/${id}/photo`, data, config);
+    },
+
     addReview({ dispatch, state }, body) {
         return new AuthService(state)
             .addReview(body, state.bootcamp.id)
@@ -427,6 +468,25 @@ export const actions = {
                 dispatch("add", notification);
                 throw error;
             });
+    },
+    deRegisterUser({ dispatch, state }, user) {
+        return new AuthService(state)
+            .deRegisterUser(user, state.bootcamp.id)
+            .then(() => {
+                const notification = {
+                    type: "success",
+                    message: `You're successfully deregistered!`
+                };
+                dispatch("add", notification);
+            })
+            .catch(error => {
+                const notification = {
+                    type: "error",
+                    message: `${error.response.data.error}`
+                };
+                dispatch("add", notification);
+                throw error;
+            });
     }
 };
 export const getters = {
@@ -442,5 +502,8 @@ export const getters = {
     },
     getUsersById(state) {
         return state.userById;
+    },
+    getTrack(state) {
+        return state.track;
     }
 };

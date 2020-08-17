@@ -4,6 +4,7 @@ const env =
     process.env.NODE_ENV === "production" ?
     process.env.EXTERNAL_SERVER_URL :
     process.env.INTERNAL_SERVER_URL;
+
 const apiClient = axios.create({
     baseURL: env,
     withCredentials: false, // This is the default

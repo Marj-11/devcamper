@@ -13,6 +13,8 @@
             <img v-else :src="editedPost.imageUrl + editedPost.photo" />
             <i @click="onPickFile" class="far fa-edit"></i>
             <v-progress-circular
+              v-if="value > 0"
+              class="progress"
               :rotate="-90"
               :size="100"
               :width="15"
@@ -24,8 +26,16 @@
           </div>
         </v-row>
 
-        <BaseInput label="Name" v-model="editedPost.name"></BaseInput>
-        <BaseInput label="Email" v-model="editedPost.email"></BaseInput>
+        <BaseInput
+          color="orange"
+          label="Name"
+          v-model="editedPost.name"
+        ></BaseInput>
+        <BaseInput
+          color="orange"
+          label="Email"
+          v-model="editedPost.email"
+        ></BaseInput>
 
         <v-row>
           <input
@@ -36,8 +46,8 @@
           />
         </v-row>
 
-        <v-card-actions>
-          <v-btn outlined class="success--text ma-2" @click="onSave"
+        <v-card-actions class="pa-0 mt-4">
+          <v-btn outlined class="success--text mr-2" @click="onSave"
             >save</v-btn
           >
           <nuxt-link :to="link"
@@ -56,6 +66,7 @@ export default {
   components: {
     BaseInput
   },
+
   props: {
     post: {
       type: Object,
@@ -74,8 +85,7 @@ export default {
         : {
             name: "",
             email: ""
-          },
-      value: 0
+          }
     };
   },
   methods: {
@@ -86,26 +96,8 @@ export default {
       this.$refs.fileInput.click();
     },
     photo(event) {
-      const files = event.target.files;
-      let file = files[0];
-      const token = this.$store.state.userToken;
-      const env =
-        process.env.NODE_ENV === "production"
-          ? process.env.EXTERNAL_SERVER_URL
-          : process.env.INTERNAL_SERVER_URL;
-      const url = `${env}/users/${this.editedPost._id}/photo`;
-      let formData = new FormData();
-      formData.append("file", file);
-      var xhr = new XMLHttpRequest();
-      xhr.open("PUT", url);
-      xhr.upload.addEventListener("progress", e => {
-        const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
-        const final = percent.toFixed(2);
-        this.value = final;
-      });
-      xhr.setRequestHeader("Content-Disposition", "form-data");
-      xhr.setRequestHeader("Authorization", `Bearer ${token}`);
-      xhr.send(formData);
+      console.log(event);
+      this.$store.dispatch("newPhoto", [event, this.post]);
     },
     initials(name) {
       const init = name
@@ -118,10 +110,16 @@ export default {
   computed: {
     link() {
       return "/users/" + this.post._id;
+    },
+    value() {
+      const num = this.$store.getters.getTrack;
+      if (num == 100) {
+        setTimeout(() => {
+          document.querySelector(".progress").style.display = "none";
+        }, 1500);
+      }
+      return num;
     }
-  },
-  mounted() {
-    console.log(process.env.INTERNAL_SERVER_URL);
   }
 };
 </script>
@@ -147,7 +145,7 @@ export default {
   cursor: pointer;
   align-self: flex-end;
   font-size: 20px;
-  color: rgb(102, 102, 102);
+  color: orange;
   top: 0;
   right: 0;
   padding: 10px;
@@ -155,7 +153,5 @@ export default {
 .image span {
   font-size: 70px;
   position: absolute;
-}
-.v-progress-circular {
 }
 </style>

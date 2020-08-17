@@ -2,7 +2,7 @@
   <v-container>
     <BootcampForm
       class="card1"
-      @photo="photoUpload"
+      @photo="[photoUpload(), reloadPage()]"
       :isEdit="true"
       :post="loadedBootcamp"
       @onSave="onSubmitting"
@@ -22,11 +22,8 @@ export default {
   },
   asyncData(context) {
     return apiService.getBootcamp(context.params.bootcampId).then(res => {
-      let edit = res.data.data;
-      delete edit._id;
-
       return {
-        loadedBootcamp: edit
+        loadedBootcamp: res.data.data
       };
     });
   },
@@ -40,9 +37,11 @@ export default {
     photoUpload(photo) {
       this.$store.dispatch("newPhoto", {
         photo: photo,
-        id: this.loadedBootcamp.id,
         as: "bootcamp"
       });
+    },
+    reloadPage() {
+      window.location.reload();
     }
   }
 };

@@ -1,6 +1,5 @@
 <template>
   <v-container class="div">
-    <div class="backo"></div>
     <v-row>
       <v-col>
         <v-row class="d-flex justify-center mb-5">
@@ -21,7 +20,8 @@
               <a @click="dispatchReviews">
                 <v-rating
                   v-model="bootcamp.averageRating"
-                  color="success"
+                  color="orange"
+                  background-color="grey darken-2"
                   half-increments
                   readonly
                   empty-icon
@@ -63,10 +63,8 @@
               </GMapMarker>
               <GMapCircle :options="circleOptions" />
             </GMap>
-            <p class="white--text mb-1 mt-1">
-              <i
-                class="light-green--text text--accent-3 fas fa-location-arrow"
-              ></i>
+            <p class="mb-1 mt-1">
+              <i class="fas fa-location-arrow"></i>
 
               {{
                 `${bootcamp.location.street}, ${bootcamp.location.city} ${bootcamp.location.zipcode}, ${bootcamp.location.country}`
@@ -74,25 +72,22 @@
             </p>
             <hr class="style-two" />
             <div class="mb-1 mt-1">
-              <a :href="bootcamp.website" target="_blank" class="white--text ">
-                <i class="light-green--text text--accent-3 fas fa-globe"></i>
+              <a :href="bootcamp.website" target="_blank">
+                <i class="fas fa-globe"></i>
                 {{ web(bootcamp.website) }}
               </a>
             </div>
             <hr class="style-two" />
             <div class="mb-1 mt-1">
-              <a
-                :href="`mailto:${bootcamp.email}`"
-                class="white--text mb-1 mt-1"
-              >
-                <i class="light-green--text text--accent-3 fas fa-envelope"></i>
+              <a :href="`mailto:${bootcamp.email}`" class="mb-1 mt-1">
+                <i class="fas fa-envelope"></i>
 
                 {{ bootcamp.email }}
               </a>
             </div>
             <hr class="style-two" />
-            <p class="white--text mb-1 mt-1">
-              <i class="light-green--text text--accent-3 fas fa-phone"></i>
+            <p class="mb-1 mt-1">
+              <i class="fas fa-phone"></i>
 
               {{ bootcamp.phone }}
             </p>
@@ -126,13 +121,40 @@
       </v-col>
     </v-row>
     <v-row justify="center" class="mb-12">
-      <v-btn class="success--text mr-3" outlined @click="registerUser">
-        Register
-      </v-btn>
-      <v-btn class="warning--text mr-3" outlined @click="updateBootcamp">
+      <div v-if="admin">
+        <v-btn
+          v-if="!reg"
+          class="success--text mr-3"
+          outlined
+          @click="[registerUser(), reloadPage()]"
+        >
+          Register
+        </v-btn>
+
+        <v-btn
+          v-else="reg"
+          class="error--text mr-3"
+          outlined
+          @click="[deRegisterUser(), reloadPage()]"
+        >
+          Deregister
+        </v-btn>
+      </div>
+
+      <v-btn
+        v-if="rightToDo"
+        class="warning--text mr-3"
+        outlined
+        @click="updateBootcamp"
+      >
         Update
       </v-btn>
-      <v-btn class="error--text mr-3 del" outlined @click="compDialog">
+      <v-btn
+        v-if="rightToDo"
+        class="error--text mr-3 del"
+        outlined
+        @click="compDialog"
+      >
         Delete
       </v-btn>
     </v-row>
@@ -339,6 +361,34 @@ export default {
     user: ["user"],
     currentLocation() {
       return this.bootcamp.location.coordinates;
+    },
+    reg() {
+      let boo = false;
+      for (let i = 0; i < this.bootcamp.participants.length; i++) {
+        const e = this.bootcamp.participants[i];
+        if (e === this.user._id) {
+          boo = true;
+        } else {
+          boo = false;
+        }
+      }
+      return boo;
+    },
+    rightToDo() {
+      if (this.user._id === this.bootcamp.user) {
+        return true;
+      } else if (this.user.role === "admin") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    admin() {
+      if (this.user.role === "admin") {
+        return false;
+      } else {
+        return true;
+      }
     }
   }),
 
@@ -346,6 +396,10 @@ export default {
     compDialog() {
       this.dialog = true;
     },
+    reloadPage() {
+      window.location.reload();
+    },
+
     no() {
       this.dialog = false;
     },
@@ -365,6 +419,11 @@ export default {
     registerUser() {
       this.$store.dispatch("registerUser", { participants: this.user._id });
     },
+    deRegisterUser() {
+      this.$store.dispatch("deRegisterUser", {
+        participants: "D" + this.user._id
+      });
+    },
     web(web) {
       const word = web.slice(8);
       return "www." + word;
@@ -377,7 +436,7 @@ export default {
       const assistance =
         A === true
           ? "And after the Bootcamp is finished, it is our pleasure to help the students finding a new job"
-          : "Du to the current situation we cannot help the student to find a new Job";
+          : "Due to the current situation we cannot help the student to find a new Job";
       const guarantee =
         G === true
           ? "If you registered in our bootcamp then the new Job is 100% is waiting for you"
@@ -400,32 +459,22 @@ hr.style-two {
   background-image: linear-gradient(
     to right,
     rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.75),
+    rgba(119, 119, 119, 0.75),
     rgba(255, 255, 255, 0)
   );
 }
 li {
   list-style: none;
 }
-.backo {
-  background: rgba(0, 0, 0, 0.4);
-  filter: blur(6px);
-  position: absolute;
-  -webkit-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
-  width: 112%;
-  height: 97%;
-  margin-left: -65px;
-  z-index: -1000;
-}
+
 @media (max-width: 337px) {
   .del {
     margin-top: 8px;
   }
 }
 .stars {
-  background-color: rgb(65, 65, 65);
+  background-color: rgb(0, 0, 0);
   border-radius: 5px;
+  border: 0.3px solid rgb(146, 146, 146);
 }
 </style>

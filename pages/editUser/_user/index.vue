@@ -1,7 +1,6 @@
 <template>
   <v-container>
     <UserForm
-      class="card1"
       @photo="photoUpload"
       :isEdit="true"
       :post="loadedUser"

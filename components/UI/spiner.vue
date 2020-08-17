@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-progress-circular
-      :size="50"
-      color="success"
-      indeterminate
-    ></v-progress-circular>
+    <v-progress-circular :size="50" indeterminate></v-progress-circular>
   </div>
 </template>
 

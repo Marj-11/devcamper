@@ -1,0 +1,13 @@
+:root {
+    --color-base-hue: 200;
+    --color-danger-hue-offset: 180;
+    --color-danger-hue: calc(var(--color-base-hue) - var(--color-danger-hue-offset));
+    --text-dark: hsl(var(--color-base-hue), 100%, 60%);
+    --text-light: hsl(var(--color-base-hue), 100%, 10%);
+    --color-scroll-0: hsl(0, 0%, 21%);
+    --color-scroll-1: hsl(0, 0%, 100%);
+    --color-scroll-2: hsl(0, 0%, 67%);
+    --color-scroll-3: hsl(0, 0%, 42%);
+    --background: linear-gradient(0deg, rgba(0, 8, 23, 1) 0%, rgba(0, 39, 91, 1) 100%);
+    --text-color: white;
+}

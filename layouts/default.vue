@@ -39,15 +39,15 @@ export default {
   },
 
   methods: {
-    handleScroll() {
-      const f = document.getElementById("app2");
-      if (window.scrollY > 140) {
-        const scroll = Math.round(window.scrollY) / 180;
-        f.style.filter = `blur(${scroll}px)`;
-      } else {
-        f.style.filter = `blur(${0}px)`;
-      }
-    }
+    // handleScroll() {
+    //   const f = document.getElementById("app2");
+    //   if (window.scrollY > 140) {
+    //     const scroll = Math.round(window.scrollY) / 180;
+    //     f.style.filter = `blur(${scroll}px)`;
+    //   } else {
+    //     f.style.filter = `blur(${0}px)`;
+    //   }
+    // }
   }
 };
 </script>
@@ -60,8 +60,7 @@ html {
   font-family: "Inter", sans-serif;
 }
 #app2 {
-  background: rgba(124, 24, 24, 0.2);
-  background-image: url("~assets/images/main.jpg");
+  background: var(--background);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
@@ -70,6 +69,7 @@ html {
   width: 100%;
   height: 100%;
 }
+
 .nuxt {
   z-index: 100;
 }
@@ -79,8 +79,10 @@ html {
   text-align: center;
   width: 50%;
   align-self: center;
+  z-index: 10000000;
 }
 .spin {
+  z-index: 10000000;
   position: absolute;
   align-self: center;
   top: 75%;
@@ -94,19 +96,22 @@ html {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(48, 48, 48);
+  background: var(--color-scroll-0);
   box-shadow: inset 0 0 5px rgb(0, 0, 0);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(0, 255, 13);
+  background: var(--color-scroll-1);
   box-shadow: inset 0 0 5px rgb(0, 0, 0);
   border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(0, 180, 9);
+  background: var(--color-scroll-2);
+}
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-scroll-3);
 }
 </style>

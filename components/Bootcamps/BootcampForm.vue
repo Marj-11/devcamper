@@ -40,12 +40,28 @@
         v-model="editedPost.description"
       ></BaseInput>
 
-      <v-file-input
-        v-if="isEdit"
-        v-model="editedPost.file"
+      <input
+        type="file"
+        style="display: none"
+        ref="fileInput"
         @change="photo"
-        label="Photo upload"
-      ></v-file-input>
+      />
+      <div>
+        <h5 v-if="isEdit">Upload photo</h5>
+        <i v-if="isEdit" @click="onPickFile" class="far fa-edit"></i>
+      </div>
+
+      <v-progress-linear
+        v-show="value"
+        class="progress"
+        v-model="value"
+        color="orange"
+        height="25"
+      >
+        <template v-slot="{ value }">
+          <strong>{{ Math.ceil(value) }}%</strong>
+        </template>
+      </v-progress-linear>
 
       <v-row>
         <v-checkbox
@@ -118,7 +134,6 @@ export default {
             phone: "",
             careers: [],
             description: "",
-            file: {},
             housing: false,
             jobAssistance: false,
             jobGuarantee: false,
@@ -132,8 +147,11 @@ export default {
       // const photo = this.$store.state.photoName;
       this.$emit("onSave", this.editedPost);
     },
-    photo() {
-      this.$emit("photo", this.editedPost.file);
+    photo(event) {
+      this.$store.dispatch("newPhoto", [event, this.post]);
+    },
+    onPickFile() {
+      this.$refs.fileInput.click();
     }
   },
   computed: {
@@ -146,6 +164,13 @@ export default {
       } else {
         return "/bootcamps";
       }
+    },
+    value() {
+      const num = this.$store.getters.getTrack;
+      if (num === 100) {
+        document.querySelector(".progress").style.display = "none";
+      }
+      return num;
     }
   }
 };
@@ -154,5 +179,18 @@ export default {
 <style scoped>
 .v-progress-circular {
   margin: 1rem;
+}
+i {
+  position: relative;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 30px;
+  color: orange;
+}
+h5 {
+  position: relative;
+  font-size: 12px;
+  font-weight: 9;
+  color: rgb(214, 214, 214);
 }
 </style>

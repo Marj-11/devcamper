@@ -1,10 +1,5 @@
 <template>
-  <v-card
-    height="100%"
-    elevation="22"
-    class="card-outter"
-    color="rgba(25,25,25,0.8)"
-  >
+  <v-card height="100%" elevation="22" class="card-outter" color="secondary">
     <v-img
       class="white--text align-end"
       height="200px"
@@ -18,10 +13,11 @@
       >Location: {{ bootcamp.location.city }}</v-card-subtitle
     >
 
-    <v-card-text class="text--primary">
+    <v-card-text>
       <v-rating
         v-model="bootcamp.averageRating"
-        color="success"
+        color="orange"
+        background-color="grey darken-2"
         half-increments
         readonly
         empty-icon
@@ -46,7 +42,7 @@
       <p v-else class="orange--text text--lighten-2">
         No participants
       </p>
-      <div>{{ bootcamp.description }}</div>
+      <div class="accent--text">{{ bootcamp.description }}</div>
     </v-card-text>
 
     <v-card-actions class="card-actions">

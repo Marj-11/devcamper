@@ -1,6 +1,5 @@
 <template>
   <div class="div">
-    <div class="back"></div>
     <div class="card1">
       <h1 class="mb-8">About Us</h1>
       <p>
