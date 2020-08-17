@@ -1,5 +1,5 @@
 <template>
-  <v-card height="100%" elevation="22" class="card-outter" color="secondary">
+  <v-card height="100%" elevation="5" class="card-outter" color="secondary">
     <v-img
       class="white--text align-end"
       height="200px"

@@ -1,0 +1,43 @@
+{
+  "entry": "server.js",
+  "files": {
+    "pages/about-us/index.js": "pages/about-us/index.js",
+    "pages/bootcamps/_id/index.js": "pages/bootcamps/_id/index.js",
+    "pages/bootcamps/bootcampForm/index.js": "pages/bootcamps/bootcampForm/index.js",
+    "pages/bootcamps/index.js": "pages/bootcamps/index.js",
+    "pages/editBootcamps/_bootcampId/index.js": "pages/editBootcamps/_bootcampId/index.js",
+    "pages/editBootcamps/index.js": "pages/editBootcamps/index.js",
+    "pages/editUser/_user/index.js": "pages/editUser/_user/index.js",
+    "pages/editUser/index.js": "pages/editUser/index.js",
+    "pages/index.js": "pages/index.js",
+    "pages/login/_resetpassword/index.js": "pages/login/_resetpassword/index.js",
+    "pages/login/index.js": "pages/login/index.js",
+    "pages/login/passwordModal/index.js": "pages/login/passwordModal/index.js",
+    "pages/reviews/_id/index.js": "pages/reviews/_id/index.js",
+    "pages/reviews/index.js": "pages/reviews/index.js",
+    "pages/signup/index.js": "pages/signup/index.js",
+    "pages/users/_id/index.js": "pages/users/_id/index.js",
+    "pages/users/index.js": "pages/users/index.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "pages/about-us/index.js": "pages/about-us/index.js.map",
+    "pages/bootcamps/_id/index.js": "pages/bootcamps/_id/index.js.map",
+    "pages/bootcamps/bootcampForm/index.js": "pages/bootcamps/bootcampForm/index.js.map",
+    "pages/bootcamps/index.js": "pages/bootcamps/index.js.map",
+    "pages/editBootcamps/_bootcampId/index.js": "pages/editBootcamps/_bootcampId/index.js.map",
+    "pages/editBootcamps/index.js": "pages/editBootcamps/index.js.map",
+    "pages/editUser/_user/index.js": "pages/editUser/_user/index.js.map",
+    "pages/editUser/index.js": "pages/editUser/index.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "pages/login/_resetpassword/index.js": "pages/login/_resetpassword/index.js.map",
+    "pages/login/index.js": "pages/login/index.js.map",
+    "pages/login/passwordModal/index.js": "pages/login/passwordModal/index.js.map",
+    "pages/reviews/_id/index.js": "pages/reviews/_id/index.js.map",
+    "pages/reviews/index.js": "pages/reviews/index.js.map",
+    "pages/signup/index.js": "pages/signup/index.js.map",
+    "pages/users/_id/index.js": "pages/users/_id/index.js.map",
+    "pages/users/index.js": "pages/users/index.js.map",
+    "server.js": "server.js.map"
+  }
+}
