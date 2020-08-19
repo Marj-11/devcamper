@@ -13,7 +13,10 @@
               "
               >{{ initials(editedPost.name) }}</span
             >
-            <img v-else :src="editedPost.imageUrl + editedPost.photo" />
+            <img
+              v-else-if="!editedPost.photo === 'no-user-photo.jpg'"
+              :src="editedPost.imageUrl + editedPost.photo"
+            />
             <i @click="onPickFile" class="far fa-edit"></i>
             <v-progress-circular
               v-if="value > 0"
