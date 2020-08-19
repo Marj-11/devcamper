@@ -34,7 +34,7 @@ export default {
     /*
      ** Customize the progress-bar color
      */
-    loading: { color: "success" },
+    loading: { color: "secondary" },
     /*
      ** Global CSS
      */
@@ -82,13 +82,15 @@ export default {
             themes: {
                 light: {
                     anchor: "#000",
-                    secondary: "#424242",
-                    accent: "#fff"
+                    secondary: "#002e62",
+                    accent: "#fff",
+                    info: "#dcedff"
                 },
                 dark: {
                     anchor: "#fff",
-                    secondary: "#fff",
-                    accent: "#000"
+                    secondary: "#dcedff",
+                    accent: "#000",
+                    info: "#002e62"
                 }
             }
         }

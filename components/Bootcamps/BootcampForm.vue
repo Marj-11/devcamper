@@ -1,7 +1,6 @@
 <template>
   <v-row class="div">
     <v-col cols="12" md="6">
-      <div class="back"></div>
       <BaseInput label="Name" v-model="editedPost.name"></BaseInput>
       <BaseInput label="Website" v-model="editedPost.website"></BaseInput>
       <BaseInput label="Email" v-model="editedPost.email"></BaseInput>
@@ -66,25 +65,25 @@
       <v-row>
         <v-checkbox
           color="orange"
-          class="ml-5"
+          class="ml-5 font-weight-black"
           v-model="editedPost.housing"
           label="Housing"
         ></v-checkbox>
         <v-checkbox
           color="orange"
-          class="ml-5"
+          class="ml-5 font-weight-black"
           v-model="editedPost.jobAssistance"
           label="Job Assistance"
         ></v-checkbox>
         <v-checkbox
           color="orange"
-          class="ml-5"
+          class="ml-5 font-weight-black"
           v-model="editedPost.jobGuarantee"
           label="job Guarantee"
         ></v-checkbox>
         <v-checkbox
           color="orange"
-          class="ml-5"
+          class="ml-5 font-weight-black"
           v-model="editedPost.acceptGi"
           label="Accept Gi"
         ></v-checkbox>

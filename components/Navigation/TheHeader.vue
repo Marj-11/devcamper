@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="header">
     <v-app-bar-nav-icon
       v-show="$vuetify.breakpoint.smAndDown"
       @click.stop="drawer = !drawer"
-      color="grey"
+      color="secondary"
     ></v-app-bar-nav-icon>
     <v-toolbar flat color="transparent" v-show="$vuetify.breakpoint.mdAndUp">
       <nuxt-link class="link" to="/"
@@ -25,7 +25,7 @@
       </div>
       <nuxt-link v-if="user" class="d-flex align-center" :to="link">
         <div>
-          <p v-if="user" class="align-center mb-0 ">
+          <p v-if="user" class="align-center mb-0 font-weight-black">
             {{ user.name }}
           </p>
           <p class="user grey--text mb-0 mt-n1 text-center">{{ user.role }}</p>
@@ -41,11 +41,15 @@
       </nuxt-link>
       <div>
         <nuxt-link v-if="!loggedIn" to="/signup"
-          ><v-btn class="ma-2 " outlined>Sign up</v-btn></nuxt-link
+          ><v-btn class="ma-2 font-weight-black" outlined
+            >Sign up</v-btn
+          ></nuxt-link
         >
 
         <nuxt-link v-if="!loggedIn" to="/login">
-          <v-btn class="ma-2 " outlined>Login</v-btn></nuxt-link
+          <v-btn class="ma-2 font-weight-black" outlined
+            >Login</v-btn
+          ></nuxt-link
         >
 
         <v-btn
@@ -59,13 +63,13 @@
     </v-toolbar>
     <v-navigation-drawer
       class="drawer"
-      color="rgb(25,25,25)"
+      color="info"
       app
       v-model="drawer"
       absolute
       temporary
     >
-      <v-list dense nav class="py-0" v-if="user">
+      <v-list nav class="py-0" v-if="user">
         <v-list-item two-line :class="'px-0'">
           <v-list-item-avatar>
             <span v-if="user.photo === 'no-user-photo.jpg'" class="headline">{{
@@ -75,9 +79,7 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <nuxt-link :to="link">
-              <v-list-item-title class="white--text">{{
-                user.name
-              }}</v-list-item-title>
+              <v-list-item-title>{{ user.name }}</v-list-item-title>
               <v-list-item-subtitle>{{ user.role }}</v-list-item-subtitle>
             </nuxt-link>
           </v-list-item-content>
@@ -87,7 +89,7 @@
       </v-list>
       <v-row justify="center">
         <nuxt-link class="link" to="/"
-          ><h1 class="white--text">
+          ><h1>
             <span class="grey darken-4 orange--text">D</span>evcamper
           </h1></nuxt-link
         >
@@ -108,9 +110,7 @@
 
           <v-list-item-content>
             <nuxt-link class="d-flex" to="/about-us">
-              <v-list-item-title class="white--text"
-                >About Us</v-list-item-title
-              >
+              <v-list-item-title>About Us</v-list-item-title>
             </nuxt-link>
           </v-list-item-content>
         </v-list-item>
@@ -121,9 +121,7 @@
 
           <v-list-item-content>
             <nuxt-link class="d-flex" to="/bootcamps">
-              <v-list-item-title class="white--text"
-                >Bootcamps</v-list-item-title
-              >
+              <v-list-item-title>Bootcamps</v-list-item-title>
             </nuxt-link>
           </v-list-item-content>
         </v-list-item>
@@ -137,11 +135,7 @@
             <v-btn class="ma-2 " outlined>Login</v-btn></nuxt-link
           >
 
-          <v-btn
-            v-if="loggedIn"
-            @click="logout"
-            class="ma-2 red white--text"
-            outlined
+          <v-btn v-if="loggedIn" @click="logout" class="ma-2 red" outlined
             >Logout</v-btn
           >
         </v-row>
@@ -153,6 +147,7 @@
 <script>
 import shinyBtn from "@/components/UI/shinyBtn.vue";
 import switcher from "@/components/UI/ThemeSwitcher.vue";
+import gsap from "gsap";
 
 export default {
   data: () => ({

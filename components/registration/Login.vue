@@ -2,8 +2,8 @@
   <v-container>
     <v-row justify="center">
       <v-col cols="12" sm="10" md="8" lg="6">
-        <v-card class="transparent" elevation="24">
-          <v-card-text>
+        <v-card elevation="24">
+          <v-card-text class="font-weight-black info">
             <v-text-field
               color="orange"
               v-model="email"
@@ -21,7 +21,7 @@
               required
             ></v-text-field>
             <v-card-actions>
-              <v-btn class="ma-2 text_root" outlined @click="submit"
+              <v-btn class="ma-2 font-weight-black" outlined @click="submit"
                 >Sign in</v-btn
               >
             </v-card-actions>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import gsap from "gsap";
 export default {
   data() {
     return {
@@ -60,6 +61,8 @@ export default {
           .then(() => {
             this.$store.dispatch("loadingOFF");
             this.$router.push("/");
+            gsap.from(".header", { duration: 1.3, ease: "bounce.out", y: -50 });
+            gsap.to(".header", { duration: 1.3, ease: "bounce.out", y: 0 });
           })
           .catch(err => {
             this.$store.dispatch("loadingOFF");
@@ -67,11 +70,11 @@ export default {
           });
       }, 1500);
     }
-  },
-  mounted() {
-    const f = document.getElementById("app2");
-    f.style.filter = `blur(7px)`;
   }
+  // mounted() {
+  //   const f = document.getElementById("app2");
+  //   f.style.filter = `blur(7px)`;
+  // }
 };
 </script>
 

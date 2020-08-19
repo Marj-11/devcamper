@@ -9,7 +9,7 @@
       <v-card-title>{{ bootcamp.name }}</v-card-title>
     </v-img>
 
-    <v-card-subtitle class="pb-0"
+    <v-card-subtitle class="pb-0 accent--text font-weight-black"
       >Location: {{ bootcamp.location.city }}</v-card-subtitle
     >
 
@@ -29,25 +29,27 @@
         "
         class="light-green--text text--accent-4"
       >
-        <i class="fas fa-user-friends"></i>
+        <i class="fas fa-user-friends font-weight-black"></i>
         {{ bootcamp.participants.length }} participants
       </p>
       <p
         v-else-if="bootcamp.participants.length === 1"
         class="orange--text text--accent-4"
       >
-        <i class="fas fa-user-friends"></i>
+        <i class="fas fa-user-friends font-weight-black"></i>
         {{ bootcamp.participants.length }} participant
       </p>
-      <p v-else class="orange--text text--lighten-2">
+      <p v-else class="orange--text text--lighten-2 font-weight-black">
         No participants
       </p>
-      <div class="accent--text">{{ bootcamp.description }}</div>
+      <div class="accent--text font-weight-black">
+        {{ bootcamp.description }}
+      </div>
     </v-card-text>
 
     <v-card-actions class="card-actions">
       <nuxt-link :to="postLink">
-        <v-btn color="success" text>
+        <v-btn color="orange" class="font-weight-black" text>
           Explore
         </v-btn>
       </nuxt-link>

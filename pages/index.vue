@@ -2,12 +2,13 @@
   <div>
     <v-container>
       <v-row class="vh" justify="center">
-        <v-col cols="8">
+        <v-col cols="12">
           <v-row justify="center" class="mt-12">
-            <h1 class=" text-center">
+            <h1 id="text" class="text-center">
               Welcome to our Bootcamps <br />
               The ultimate learning resource for programmers
             </h1>
+            <!-- <v-img :src="photo"></v-img> -->
           </v-row>
           <v-row justify="center">
             <h4 class="mt-5 " v-if="!loggedIn">
@@ -20,6 +21,7 @@
           <v-row justify="center">
             <spiner class="mt-10" v-show="isLoading" />
             <a
+              v-show="$vuetify.breakpoint.mdAndUp"
               href="#bootcamps"
               class="scroll-down"
               :class="{
@@ -85,6 +87,11 @@ import TheFooter from "@/components/UI/TheFooter.vue";
 import spiner from "@/components/UI/spiner.vue";
 
 export default {
+  data() {
+    return {
+      photo: { src: require("assets/images/wall.png") }
+    };
+  },
   components: {
     apiService,
     Info,
@@ -99,10 +106,10 @@ export default {
       };
     });
   },
-  mounted() {
-    const f = document.getElementById("app2");
-    f.style.filter = null;
-  },
+  // mounted() {
+  //   const f = document.getElementById("app2");
+  //   f.style.filter = null;
+  // },
   computed: {
     loggedIn() {
       return this.$store.getters.loggedIn;

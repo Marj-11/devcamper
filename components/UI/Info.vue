@@ -7,7 +7,7 @@
           {{ titles[i] }}
         </h2>
         <p
-          class="mt-4 "
+          class="mt-4 font-weight-black"
           :class="{ 'text-center': $vuetify.breakpoint.smAndDown }"
         >
           {{ texts[i] }}

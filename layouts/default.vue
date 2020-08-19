@@ -12,6 +12,8 @@
 import TheHeader from "@/components/Navigation/TheHeader.vue";
 import NotificationContainer from "@/components/UI/NotificationContainer.vue";
 import spiner from "@/components/UI/spiner.vue";
+import gsap from "gsap";
+
 // import Drawer from "@/components/UI/Drawer.vue";
 
 export default {
@@ -33,7 +35,6 @@ export default {
   beforeMount() {
     window.addEventListener("scroll", this.handleScroll);
   },
-
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);
   },
@@ -60,7 +61,25 @@ html {
   font-family: "Inter", sans-serif;
 }
 #app2 {
-  background: var(--background);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 8, 23, 1) 0%,
+    rgba(0, 39, 91, 1) 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#app3 {
+  background: linear-gradient(
+    0deg,
+    rgba(205, 227, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;

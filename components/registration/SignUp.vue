@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-col cols="12" sm="10" md="8" lg="6">
         <v-card elevation="24" color="transparent">
-          <v-card-text>
+          <v-card-text class="font-weight-black info">
             <v-text-field
               color="orange"
               v-model="name"
@@ -36,7 +36,9 @@
               v-model="role"
             ></v-overflow-btn>
             <v-card-actions>
-              <v-btn class="ma-2" outlined @click="submit">Sign up</v-btn>
+              <v-btn class="ma-2 font-weight-black" outlined @click="submit"
+                >Sign up</v-btn
+              >
             </v-card-actions>
             <ul>
               <li class="myError" v-for="error in errors">

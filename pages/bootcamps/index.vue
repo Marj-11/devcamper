@@ -16,9 +16,10 @@
       </v-row>
       <v-row>
         <v-col
+          class="card"
           v-for="bootcamp in bootcamps"
-          cols="12"
           :key="bootcamp.id"
+          cols="12"
           md="4"
         >
           <BootcampCard :id="bootcamp.id" :bootcamp="bootcamp" />
@@ -30,6 +31,7 @@
 <script>
 import BootcampCard from "@/components/bootcamps/BootcampCard.vue";
 import { mapState } from "vuex";
+import gsap from "gsap";
 
 export default {
   components: {
@@ -49,6 +51,19 @@ export default {
         return true;
       }
     }
-  })
+  }),
+  mounted() {
+    gsap.from(".card", {
+      duration: 0.8,
+      opacity: 0,
+      scale: 0,
+      y: 200,
+      ease: "power1",
+      stagger: {
+        each: 0.2,
+        from: "start"
+      }
+    });
+  }
 };
 </script>

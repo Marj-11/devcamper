@@ -2,11 +2,11 @@
   <div class="div">
     <div class="card1">
       <h1 class="mb-8">About Us</h1>
-      <p>
+      <p class="font-weight-black">
         Welcome to Devcamper, your number one source for learning web
         development. We're dedicated to giving you the very best of bootcamps,
         with a focus on dependability, customer service and uniqueness. Founded
-        in 2020 by Marj Hajyahya, Marj has come a long way from its beginnings
+        in 2013 by Marj Hajyahya, Marj has come a long way from its beginnings
         in Vienna, Austria. When Marj first started out, his passion for passion
         of helping other students be more eco-friendly, providing the best tools
         for his fellow programmers drove him to do intense research, quit his

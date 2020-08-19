@@ -63,7 +63,7 @@
               </GMapMarker>
               <GMapCircle :options="circleOptions" />
             </GMap>
-            <p class="mb-1 mt-1">
+            <p class="mb-1 mt-1 font-weight-black">
               <i class="fas fa-location-arrow"></i>
 
               {{
@@ -72,21 +72,28 @@
             </p>
             <hr class="style-two" />
             <div class="mb-1 mt-1">
-              <a :href="bootcamp.website" target="_blank">
+              <a
+                :href="bootcamp.website"
+                target="_blank"
+                class="font-weight-black"
+              >
                 <i class="fas fa-globe"></i>
                 {{ web(bootcamp.website) }}
               </a>
             </div>
             <hr class="style-two" />
             <div class="mb-1 mt-1">
-              <a :href="`mailto:${bootcamp.email}`" class="mb-1 mt-1">
+              <a
+                :href="`mailto:${bootcamp.email}`"
+                class="mb-1 mt-1 font-weight-black"
+              >
                 <i class="fas fa-envelope"></i>
 
                 {{ bootcamp.email }}
               </a>
             </div>
             <hr class="style-two" />
-            <p class="mb-1 mt-1">
+            <p class="mb-1 mt-1 font-weight-black">
               <i class="fas fa-phone"></i>
 
               {{ bootcamp.phone }}
@@ -397,7 +404,9 @@ export default {
       this.dialog = true;
     },
     reloadPage() {
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     },
 
     no() {

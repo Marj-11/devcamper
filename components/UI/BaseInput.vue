@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-text-field
+      class="font-weight-black"
       :label="label"
       v-bind="$attrs"
       :value="value"
