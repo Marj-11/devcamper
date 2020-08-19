@@ -6,8 +6,11 @@
         <v-row justify="center">
           <div class="image">
             <span
-              v-if="editedPost.photo === 'no-user-photo.jpg'"
-              class="white--text"
+              v-if="
+                editedPost.photo === 'no-user-photo.jpg' &&
+                  value === 0 &&
+                  value > 99
+              "
               >{{ initials(editedPost.name) }}</span
             >
             <img v-else :src="editedPost.imageUrl + editedPost.photo" />
