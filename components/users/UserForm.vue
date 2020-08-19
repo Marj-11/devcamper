@@ -6,28 +6,30 @@
         <v-row justify="center">
           <div class="image">
             <span
-              v-if="
-                editedPost.photo === 'no-user-photo.jpg' &&
-                  value === 0 &&
-                  value > 99
-              "
+              v-if="editedPost.photo === 'no-user-photo.jpg' && value === 0"
               >{{ initials(editedPost.name) }}</span
             >
             <img
-              v-else-if="!editedPost.photo === 'no-user-photo.jpg'"
+              v-else-if="value === 0"
               :src="editedPost.imageUrl + editedPost.photo"
             />
-            <i @click="onPickFile" class="far fa-edit"></i>
+            <i
+              id="cir"
+              v-if="editedPost.photo !== 'no-user-photo.jpg'"
+              @click="deletePhoto"
+              class="fas fa-times-circle cir"
+            ></i>
+            <i id="pick" @click="onPickFile" class="far fa-edit"></i>
             <v-progress-circular
-              v-if="value > 0"
+              v-if="value < 100 && value !== 0"
               class="progress"
               :rotate="-90"
               :size="100"
               :width="15"
               :value="value"
-              color="success"
+              color="light-green accent-4"
             >
-              {{ value }}
+              {{ value }}%
             </v-progress-circular>
           </div>
         </v-row>
@@ -101,9 +103,24 @@ export default {
     onPickFile() {
       this.$refs.fileInput.click();
     },
+    deletePhoto() {
+      this.$store
+        .dispatch("updateUser", {
+          ...this.editedPost,
+          photo: "no-user-photo.jpg"
+        })
+        .then(() => {
+          setTimeout(() => {
+            window.location.reload();
+          }, 1200);
+        });
+    },
     photo(event) {
-      console.log(event);
-      this.$store.dispatch("newPhoto", [event, this.post]);
+      this.$store.dispatch("newPhoto", [event, this.post]).then(() => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      });
     },
     initials(name) {
       const init = name
@@ -145,7 +162,7 @@ export default {
   height: 100%;
   width: 100%;
 }
-.image i {
+#pick {
   justify-self: center;
   position: absolute;
   cursor: pointer;
@@ -155,6 +172,13 @@ export default {
   top: 0;
   right: 0;
   padding: 10px;
+}
+#cir {
+  position: absolute;
+  color: red;
+  cursor: pointer;
+  right: 10px;
+  bottom: 10px;
 }
 .image span {
   font-size: 70px;

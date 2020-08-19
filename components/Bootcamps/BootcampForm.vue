@@ -51,7 +51,7 @@
       </div>
 
       <v-progress-linear
-        v-show="value"
+        v-show="value < 100 && value !== 0"
         class="progress"
         v-model="value"
         color="orange"
