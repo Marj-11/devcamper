@@ -104,23 +104,13 @@ export default {
       this.$refs.fileInput.click();
     },
     deletePhoto() {
-      this.$store
-        .dispatch("updateUser", {
-          ...this.editedPost,
-          photo: "no-user-photo.jpg"
-        })
-        .then(() => {
-          setTimeout(() => {
-            window.location.reload();
-          }, 1200);
-        });
+      this.$store.dispatch("updateUser", {
+        ...this.editedPost,
+        photo: "no-user-photo.jpg"
+      });
     },
     photo(event) {
-      this.$store.dispatch("newPhoto", [event, this.post]).then(() => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 1200);
-      });
+      this.$store.dispatch("newPhoto", [event, this.post]);
     },
     initials(name) {
       const init = name
@@ -142,6 +132,13 @@ export default {
         }, 1500);
       }
       return num;
+    }
+  },
+  watch: {
+    value(newValue) {
+      if (newValue === 100) {
+        window.location.reload();
+      }
     }
   }
 };
