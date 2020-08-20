@@ -3,119 +3,102 @@
     "name": "about-us",
     "path": "/about-us",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\about-us\\\\index.vue",
-    "chunkName": "pages/about-us/index",
-    "_name": "_6819b06f"
+    "chunkName": "pages/about-us/index"
   },
   {
     "name": "bootcamps",
     "path": "/bootcamps",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\bootcamps\\\\index.vue",
-    "chunkName": "pages/bootcamps/index",
-    "_name": "_30763fc7"
+    "chunkName": "pages/bootcamps/index"
   },
   {
     "name": "editBootcamps",
     "path": "/editBootcamps",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\editBootcamps\\\\index.vue",
-    "chunkName": "pages/editBootcamps/index",
-    "_name": "_3f4cdb1e"
+    "chunkName": "pages/editBootcamps/index"
   },
   {
     "name": "editUser",
     "path": "/editUser",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\editUser\\\\index.vue",
-    "chunkName": "pages/editUser/index",
-    "_name": "_538b1ff8"
+    "chunkName": "pages/editUser/index"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\login\\\\index.vue",
-    "chunkName": "pages/login/index",
-    "_name": "_e1706cc4"
+    "chunkName": "pages/login/index"
   },
   {
     "name": "reviews",
     "path": "/reviews",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\reviews\\\\index.vue",
-    "chunkName": "pages/reviews/index",
-    "_name": "_7c1fc66c"
+    "chunkName": "pages/reviews/index"
   },
   {
     "name": "signup",
     "path": "/signup",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\signup\\\\index.vue",
-    "chunkName": "pages/signup/index",
-    "_name": "_3e10f0b5"
+    "chunkName": "pages/signup/index"
   },
   {
     "name": "users",
     "path": "/users",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\users\\\\index.vue",
-    "chunkName": "pages/users/index",
-    "_name": "_aba3bcc2"
+    "chunkName": "pages/users/index"
   },
   {
     "name": "bootcamps-bootcampForm",
     "path": "/bootcamps/bootcampForm",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\bootcamps\\\\bootcampForm\\\\index.vue",
-    "chunkName": "pages/bootcamps/bootcampForm/index",
-    "_name": "_521f0550"
+    "chunkName": "pages/bootcamps/bootcampForm/index"
   },
   {
     "name": "login-passwordModal",
     "path": "/login/passwordModal",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\login\\\\passwordModal\\\\index.vue",
-    "chunkName": "pages/login/passwordModal/index",
-    "_name": "_33f18124"
+    "chunkName": "pages/login/passwordModal/index"
   },
   {
     "name": "bootcamps-id",
     "path": "/bootcamps/:id",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\bootcamps\\\\_id\\\\index.vue",
-    "chunkName": "pages/bootcamps/_id/index",
-    "_name": "_7f05d1b3"
+    "chunkName": "pages/bootcamps/_id/index"
   },
   {
     "name": "editBootcamps-bootcampId",
     "path": "/editBootcamps/:bootcampId",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\editBootcamps\\\\_bootcampId\\\\index.vue",
-    "chunkName": "pages/editBootcamps/_bootcampId/index",
-    "_name": "_99c614d4"
+    "chunkName": "pages/editBootcamps/_bootcampId/index"
   },
   {
     "name": "editUser-user",
     "path": "/editUser/:user",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\editUser\\\\_user\\\\index.vue",
-    "chunkName": "pages/editUser/_user/index",
-    "_name": "_461bfab2"
+    "chunkName": "pages/editUser/_user/index"
   },
   {
     "name": "login-resetpassword",
     "path": "/login/:resetpassword",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\login\\\\_resetpassword\\\\index.vue",
-    "chunkName": "pages/login/_resetpassword/index",
-    "_name": "_96a52b5a"
+    "chunkName": "pages/login/_resetpassword/index"
   },
   {
     "name": "reviews-id",
     "path": "/reviews/:id",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\reviews\\\\_id\\\\index.vue",
-    "chunkName": "pages/reviews/_id/index",
-    "_name": "_5020aba4"
+    "chunkName": "pages/reviews/_id/index"
   },
   {
     "name": "users-id",
     "path": "/users/:id",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\users\\\\_id\\\\index.vue",
-    "chunkName": "pages/users/_id/index",
-    "_name": "_3aad524a"
+    "chunkName": "pages/users/_id/index"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\Marj\\\\Desktop\\\\Projects\\\\Devcamper-nuxt-pro\\\\devcamper\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_cd6fa166"
+    "chunkName": "pages/index"
   }
 ]

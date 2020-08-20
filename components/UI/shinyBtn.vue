@@ -1,61 +1,51 @@
 <template>
   <div>
-    <a href="#" class="icon">login </a>
+    <a @click="click" class="icon white--text">Bootcamps</a>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    click() {
+      this.$emit("btn");
+    }
+  }
+};
 </script>
 
-<style lang="scss" scoped>
+<style>
 /**
  * Icon
  */
-
 .icon {
   position: relative;
   overflow: hidden;
-  width: 50px;
+  width: 40%;
   height: 50px;
   display: inline-block;
-
-  margin: 25px 0 25px 25px;
-  border-radius: 5px;
-  color: #fff;
+  margin: 25px 25px 25px 25px;
   text-decoration: none;
   text-align: center;
   line-height: 50px;
-  font-size: 12px;
-  font-family: sans-serif;
-}
-
-.icon:nth-child(1) {
-  background: cornflowerblue;
-}
-.icon:nth-child(2) {
-  background: salmon;
-}
-.icon:nth-child(3) {
-  background: gray;
+  font-size: 16px;
+  background: rgb(0, 65, 187);
 }
 
 /**
  * The "shine" element
  */
-
 .icon:after {
   animation: shine 5s ease-in-out infinite;
   animation-fill-mode: forwards;
   content: "";
   position: absolute;
-  top: -110%;
-  left: -210%;
-  width: 200%;
-  height: 200%;
+  top: -760%;
+  left: -760%;
+  width: 600%;
+  height: 700%;
   opacity: 0;
   transform: rotate(30deg);
-
   background: rgba(255, 255, 255, 0.13);
   background: linear-gradient(
     to right,
@@ -65,28 +55,25 @@ export default {};
     rgba(255, 255, 255, 0) 100%
   );
 }
-
 /* Hover state - trigger effect */
-
 /* Active state */
-
 .icon:active:after {
   opacity: 0;
 }
-
 @keyframes shine {
   10% {
     opacity: 1;
     top: -30%;
-    left: -30%;
+    left: -35%;
     transition-property: left, top, opacity;
     transition-duration: 0.7s, 0.7s, 0.15s;
     transition-timing-function: ease;
   }
   100% {
     opacity: 0;
-    top: -30%;
-    left: -30%;
+    top: -760%;
+    left: -766%;
+
     transition-property: left, top, opacity;
   }
 }

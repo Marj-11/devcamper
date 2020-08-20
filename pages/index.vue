@@ -1,36 +1,51 @@
 <template>
   <div>
-    <v-container>
-      <v-row class="vh" justify="center">
-        <v-col cols="12">
-          <v-row justify="center" class="mt-12">
+    <div v-show="$vuetify.breakpoint.mdAndUp">
+      <v-row v-if="loggedIn" class="d-flex justify-space-between vh">
+        <v-col cols="6">
+          <div class="text-center ml-2">
             <h1 id="text" class="text-center">
               Welcome to our Bootcamps <br />
               The ultimate learning resource for programmers
             </h1>
-            <!-- <v-img :src="photo"></v-img> -->
-          </v-row>
-          <v-row justify="center">
-            <h4 class="mt-5 " v-if="!loggedIn">
-              To use this app you need to&nbsp;
-              <nuxt-link class="success--text" to="/login">Login</nuxt-link
-              >&nbsp;&nbsp;or&nbsp;
-              <nuxt-link class="yellow--text" to="/signup">Sign Up</nuxt-link>
-            </h4>
-          </v-row>
-          <v-row justify="center">
-            <spiner class="mt-10" v-show="isLoading" />
-            <a
-              v-show="$vuetify.breakpoint.mdAndUp"
-              href="#bootcamps"
-              class="scroll-down"
-              :class="{
-                subheading: $vuetify.breakpoint.smAndDown,
-                'display-2': $vuetify.breakpoint.mdAndUp
-              }"
-            ></a>
-          </v-row>
+            <shinyBtn @btn="click" id="btn" />
+          </div>
         </v-col>
+        <v-col cols="2" class="mr-n12">
+          <v-img id="phone" :src="phone"></v-img>
+        </v-col>
+        <v-col cols="4">
+          <v-img id="laptop" :src="laptop"></v-img>
+        </v-col>
+      </v-row>
+    </div>
+    <v-container>
+      <v-row justify="center" class="vh">
+        <v-col class="text-center"
+          ><h1 class="text-center mt-12">
+            Welcome to our Bootcamps <br />
+            The ultimate learning resource for programmers
+          </h1>
+          <shinyBtn v-if="loggedIn" @btn="click" id="btn" />
+          <h4 class="text-center mt-5" v-if="!loggedIn">
+            To use this app you need to&nbsp;
+            <nuxt-link class="success--text" to="/login">Login</nuxt-link
+            >&nbsp;&nbsp;or&nbsp;
+            <nuxt-link class="yellow--text" to="/signup">Sign Up</nuxt-link>
+          </h4></v-col
+        >
+      </v-row>
+      <v-row justify="center">
+        <spiner class="mt-10" v-show="isLoading" />
+        <a
+          v-show="$vuetify.breakpoint.mdAndUp"
+          href="#bootcamps"
+          class="scroll-down"
+          :class="{
+            subheading: $vuetify.breakpoint.smAndDown,
+            'display-2': $vuetify.breakpoint.mdAndUp
+          }"
+        ></a>
       </v-row>
       <v-row id="bootcamps">
         <v-col>
@@ -85,18 +100,23 @@ import apiService from "@/services/apiService.js";
 import Info from "@/components/UI/Info.vue";
 import TheFooter from "@/components/UI/TheFooter.vue";
 import spiner from "@/components/UI/spiner.vue";
+import shinyBtn from "@/components/UI/shinyBtn.vue";
+import gsap from "gsap";
 
 export default {
   data() {
     return {
-      photo: { src: require("assets/images/wall.png") }
+      laptop: { src: require("assets/images/wall.png") },
+      phone: { src: require("assets/images/phone.png") },
+      timeline: ""
     };
   },
   components: {
     apiService,
     Info,
     TheFooter,
-    spiner
+    spiner,
+    shinyBtn
   },
   asyncData(context) {
     return apiService.getBootcamps().then(res => {
@@ -106,10 +126,16 @@ export default {
       };
     });
   },
-  // mounted() {
-  //   const f = document.getElementById("app2");
-  //   f.style.filter = null;
-  // },
+  methods: {
+    click() {
+      const timeline = this.timeline;
+      timeline.reversed() ? timeline.play() : timeline.reverse();
+
+      setTimeout(() => {
+        this.$router.push("/bootcamps");
+      }, 1500);
+    }
+  },
   computed: {
     loggedIn() {
       return this.$store.getters.loggedIn;
@@ -117,32 +143,60 @@ export default {
     isLoading() {
       return this.$store.state.isLoading;
     }
+  },
+  mounted() {
+    this.timeline = gsap.timeline({ defaults: { duration: 0.8 } });
+    this.timeline
+      .from(
+        "#text",
+        {
+          opacity: 0,
+          y: -50
+        },
+        "-=.2"
+      )
+      .from(
+        "#btn",
+        {
+          opacity: 0,
+          y: 50
+        },
+        "-=.4"
+      )
+      .from(
+        "#phone",
+        {
+          opacity: 0,
+          y: 50
+        },
+        "-=.1"
+      )
+      .from(
+        "#laptop",
+        {
+          opacity: 0,
+          x: 100
+        },
+        "-=1.5"
+      );
   }
 };
 </script>
 <style scoped>
+#text {
+  margin-top: 16%;
+}
 a {
   max-height: 22px;
   text-decoration: none;
   color: rgb(0, 255, 13);
-}
-.back1 {
-  background: rgba(0, 0, 0, 0.8);
-  margin-left: -14px;
-  filter: blur(6px);
-  position: absolute;
-  -webkit-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 10px 68px 0px rgba(0, 0, 0, 0.75);
-  width: 100%;
-  height: 15%;
 }
 .scroll-down {
   position: absolute;
   text-decoration: none;
   width: 55px;
   min-height: 55px;
-  top: 23%;
+  top: 27%;
   border-bottom: 2px solid var(--text-color);
   border-right: 2px solid var(--text-color);
   border-radius: 1px;

@@ -394,7 +394,7 @@ export const actions = {
             .then(res => {
                 const notification = {
                     type: "success",
-                    message: `Thank you! Your review has benn successfully commited!`
+                    message: `Thank you! Your review has been successfully commited!`
                 };
                 dispatch("add", notification);
             })

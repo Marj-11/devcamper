@@ -71,7 +71,12 @@ export default {
     },
     yes() {
       this.$store.dispatch("deleteUser", this.fetchedUser._id).then(() => {
-        this.$router.push("/");
+        this.$store.dispatch("loadingON").then(() => {
+          this.$store.dispatch("logout").then(() => {
+            this.$store.dispatch("loadingOFF");
+            this.$router.push("/");
+          });
+        });
       });
       this.dialog = false;
     },

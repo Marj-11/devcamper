@@ -94,9 +94,6 @@ export default {
           text: this.text
         };
         this.$store.dispatch("addReview", review);
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
       }
       this.$refs.form.validate();
     }

@@ -104,10 +104,14 @@ export default {
       this.$refs.fileInput.click();
     },
     deletePhoto() {
-      this.$store.dispatch("updateUser", {
-        ...this.editedPost,
-        photo: "no-user-photo.jpg"
-      });
+      this.$store
+        .dispatch("updateUser", {
+          ...this.editedPost,
+          photo: "no-user-photo.jpg"
+        })
+        .then(() => {
+          window.location.reload();
+        });
     },
     photo(event) {
       this.$store.dispatch("newPhoto", [event, this.post]);
