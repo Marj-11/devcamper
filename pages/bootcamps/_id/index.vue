@@ -2,17 +2,15 @@
   <v-container class="div">
     <v-row>
       <v-col>
-        <v-row class="d-flex justify-center mb-5">
+        <v-row class="d-flex justify-center mb-5v text-center">
           <h1>{{ bootcamp.name }}</h1>
         </v-row>
         <v-row justify="center">
-          <v-img height="30vh" :src="bootcamp.imageUrl + bootcamp.photo" />
+          <v-img height="300" :src="bootcamp.imageUrl + bootcamp.photo" />
 
-          <v-col cols="10">
-            <h3 class="text-center">
-              {{ bootcamp.description }}
-            </h3>
-          </v-col>
+          <h3 class="text-center ma-3">
+            {{ bootcamp.description }}
+          </h3>
         </v-row>
         <v-row justify="center">
           <v-col cols="12" class="text-center" md="3">
@@ -158,7 +156,7 @@
       </v-btn>
       <v-btn
         v-if="rightToDo"
-        class="error--text mr-3 del"
+        class="error--text mr-3"
         outlined
         @click="compDialog"
       >

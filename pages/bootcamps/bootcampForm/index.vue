@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <div>
     <BootcampForm class="card1" @onSave="onSubmitting" />
-  </v-container>
+  </div>
 </template>
 
 <script>

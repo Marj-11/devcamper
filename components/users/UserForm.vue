@@ -9,10 +9,7 @@
               v-if="editedPost.photo === 'no-user-photo.jpg' && value === 0"
               >{{ initials(editedPost.name) }}</span
             >
-            <img
-              v-else-if="value === 0"
-              :src="editedPost.imageUrl + editedPost.photo"
-            />
+            <img v-else-if="value === 0" :src="photoSrc()" />
             <i
               id="cir"
               v-if="editedPost.photo !== 'no-user-photo.jpg'"
@@ -110,7 +107,9 @@ export default {
           photo: "no-user-photo.jpg"
         })
         .then(() => {
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         });
     },
     photo(event) {
@@ -122,6 +121,9 @@ export default {
         .map(n => n.charAt(0).toUpperCase())
         .join("");
       return init;
+    },
+    photoSrc() {
+      return this.editedPost.imageUrl + this.editedPost.photo;
     }
   },
   computed: {
@@ -141,7 +143,9 @@ export default {
   watch: {
     value(newValue) {
       if (newValue === 100) {
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
     }
   }

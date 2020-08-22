@@ -183,6 +183,9 @@ export default {
 };
 </script>
 <style scoped>
+.z {
+  z-index: -1000000000;
+}
 #text {
   margin-top: 16%;
 }

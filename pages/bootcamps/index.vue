@@ -6,7 +6,7 @@
       </v-row>
 
       <v-row>
-        <v-col class="d-flex justify-end">
+        <v-col class="d-flex justify-center">
           <nuxt-link to="/bootcamps/bootcampForm">
             <v-btn v-if="rightTo" color="orange white--text">
               <v-icon>mdi-plus</v-icon>&nbsp; Add Bootcamp

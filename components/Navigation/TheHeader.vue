@@ -36,7 +36,7 @@
             class="white--text headline"
             >{{ initials(user.name) }}</span
           >
-          <img v-else :src="user.imageUrl + user.photo" />
+          <img v-else :src="photoSrc()" />
         </v-avatar>
       </nuxt-link>
       <div>
@@ -75,7 +75,7 @@
             <span v-if="user.photo === 'no-user-photo.jpg'" class="headline">{{
               initials(user.name)
             }}</span>
-            <img v-else :src="user.imageUrl + user.photo" />
+            <img v-else :src="photoSrc()" />
           </v-list-item-avatar>
           <v-list-item-content>
             <nuxt-link :to="link">
@@ -188,6 +188,9 @@ export default {
         .map(n => n.charAt(0).toUpperCase())
         .join("");
       return init;
+    },
+    photoSrc() {
+      return this.user.imageUrl + this.user.photo;
     }
   }
 };
@@ -195,7 +198,7 @@ export default {
 
 <style>
 .drawer {
-  z-index: 10000;
+  z-index: 1000000;
 }
 
 .img {

@@ -1,5 +1,5 @@
 <template>
-  <v-row class="div">
+  <v-row justify="center" class="ml-n1">
     <v-col cols="12" md="6">
       <BaseInput label="Name" v-model="editedPost.name"></BaseInput>
       <BaseInput label="Website" v-model="editedPost.website"></BaseInput>
