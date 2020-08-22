@@ -376,7 +376,7 @@ const baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__[/* default *
 "use strict";
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_VProgressLinear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(165);
+/* harmony import */ var _components_VProgressLinear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(166);
 
 
 /**
@@ -422,17 +422,6 @@ const baseMixins = Object(_util_mixins__WEBPACK_IMPORTED_MODULE_7__[/* default *
 /***/ }),
 
 /***/ 165:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _VProgressLinear__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(162);
-
-
-/* harmony default export */ __webpack_exports__["a"] = (_VProgressLinear__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]);
-
-/***/ }),
-
-/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -442,6 +431,17 @@ var content = __webpack_require__(169);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 __webpack_require__(5).default("744bab4a", content, true)
+
+/***/ }),
+
+/***/ 166:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _VProgressLinear__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(162);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (_VProgressLinear__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]);
 
 /***/ }),
 
@@ -1193,6 +1193,148 @@ const dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', '
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+
+// EXTERNAL MODULE: ./node_modules/vuetify/src/components/VGrid/_grid.sass
+var _grid = __webpack_require__(165);
+
+// EXTERNAL MODULE: ./node_modules/vuetify/src/components/VGrid/VGrid.sass
+var VGrid = __webpack_require__(76);
+
+// EXTERNAL MODULE: external "vue"
+var external_vue_ = __webpack_require__(0);
+var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
+
+// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/grid.js
+// Types
+
+function grid_VGrid(name) {
+  /* @vue/component */
+  return external_vue_default.a.extend({
+    name: `v-${name}`,
+    functional: true,
+    props: {
+      id: String,
+      tag: {
+        type: String,
+        default: 'div'
+      }
+    },
+
+    render(h, {
+      props,
+      data,
+      children
+    }) {
+      data.staticClass = `${name} ${data.staticClass || ''}`.trim();
+      const {
+        attrs
+      } = data;
+
+      if (attrs) {
+        // reset attrs to extract utility clases like pa-3
+        data.attrs = {};
+        const classes = Object.keys(attrs).filter(key => {
+          // TODO: Remove once resolved
+          // https://github.com/vuejs/vue/issues/7841
+          if (key === 'slot') return false;
+          const value = attrs[key]; // add back data attributes like data-test="foo" but do not
+          // add them as classes
+
+          if (key.startsWith('data-')) {
+            data.attrs[key] = value;
+            return false;
+          }
+
+          return value || typeof value === 'string';
+        });
+        if (classes.length) data.staticClass += ` ${classes.join(' ')}`;
+      }
+
+      if (props.id) {
+        data.domProps = data.domProps || {};
+        data.domProps.id = props.id;
+      }
+
+      return h(props.tag, data, children);
+    }
+
+  });
+}
+// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mergeData.js
+var mergeData = __webpack_require__(18);
+
+// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
+
+
+
+
+/* @vue/component */
+
+/* harmony default export */ var VContainer = __webpack_exports__["a"] = (grid_VGrid('container').extend({
+  name: 'v-container',
+  functional: true,
+  props: {
+    id: String,
+    tag: {
+      type: String,
+      default: 'div'
+    },
+    fluid: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  render(h, {
+    props,
+    data,
+    children
+  }) {
+    let classes;
+    const {
+      attrs
+    } = data;
+
+    if (attrs) {
+      // reset attrs to extract utility clases like pa-3
+      data.attrs = {};
+      classes = Object.keys(attrs).filter(key => {
+        // TODO: Remove once resolved
+        // https://github.com/vuejs/vue/issues/7841
+        if (key === 'slot') return false;
+        const value = attrs[key]; // add back data attributes like data-test="foo" but do not
+        // add them as classes
+
+        if (key.startsWith('data-')) {
+          data.attrs[key] = value;
+          return false;
+        }
+
+        return value || typeof value === 'string';
+      });
+    }
+
+    if (props.id) {
+      data.domProps = data.domProps || {};
+      data.domProps.id = props.id;
+    }
+
+    return h(props.tag, Object(mergeData["a" /* default */])(data, {
+      staticClass: 'container',
+      class: Array({
+        'container--fluid': props.fluid
+      }).concat(classes || [])
+    }), children);
+  }
+
+}));
+
+/***/ }),
+
+/***/ 183:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var _src_components_VGrid_VGrid_sass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(76);
 /* harmony import */ var _src_components_VGrid_VGrid_sass__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_src_components_VGrid_VGrid_sass__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
@@ -1347,148 +1489,6 @@ const cache = new Map();
 
 /***/ }),
 
-/***/ 183:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXTERNAL MODULE: ./node_modules/vuetify/src/components/VGrid/_grid.sass
-var _grid = __webpack_require__(166);
-
-// EXTERNAL MODULE: ./node_modules/vuetify/src/components/VGrid/VGrid.sass
-var VGrid = __webpack_require__(76);
-
-// EXTERNAL MODULE: external "vue"
-var external_vue_ = __webpack_require__(0);
-var external_vue_default = /*#__PURE__*/__webpack_require__.n(external_vue_);
-
-// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/grid.js
-// Types
-
-function grid_VGrid(name) {
-  /* @vue/component */
-  return external_vue_default.a.extend({
-    name: `v-${name}`,
-    functional: true,
-    props: {
-      id: String,
-      tag: {
-        type: String,
-        default: 'div'
-      }
-    },
-
-    render(h, {
-      props,
-      data,
-      children
-    }) {
-      data.staticClass = `${name} ${data.staticClass || ''}`.trim();
-      const {
-        attrs
-      } = data;
-
-      if (attrs) {
-        // reset attrs to extract utility clases like pa-3
-        data.attrs = {};
-        const classes = Object.keys(attrs).filter(key => {
-          // TODO: Remove once resolved
-          // https://github.com/vuejs/vue/issues/7841
-          if (key === 'slot') return false;
-          const value = attrs[key]; // add back data attributes like data-test="foo" but do not
-          // add them as classes
-
-          if (key.startsWith('data-')) {
-            data.attrs[key] = value;
-            return false;
-          }
-
-          return value || typeof value === 'string';
-        });
-        if (classes.length) data.staticClass += ` ${classes.join(' ')}`;
-      }
-
-      if (props.id) {
-        data.domProps = data.domProps || {};
-        data.domProps.id = props.id;
-      }
-
-      return h(props.tag, data, children);
-    }
-
-  });
-}
-// EXTERNAL MODULE: ./node_modules/vuetify/lib/util/mergeData.js
-var mergeData = __webpack_require__(18);
-
-// CONCATENATED MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js
-
-
-
-
-/* @vue/component */
-
-/* harmony default export */ var VContainer = __webpack_exports__["a"] = (grid_VGrid('container').extend({
-  name: 'v-container',
-  functional: true,
-  props: {
-    id: String,
-    tag: {
-      type: String,
-      default: 'div'
-    },
-    fluid: {
-      type: Boolean,
-      default: false
-    }
-  },
-
-  render(h, {
-    props,
-    data,
-    children
-  }) {
-    let classes;
-    const {
-      attrs
-    } = data;
-
-    if (attrs) {
-      // reset attrs to extract utility clases like pa-3
-      data.attrs = {};
-      classes = Object.keys(attrs).filter(key => {
-        // TODO: Remove once resolved
-        // https://github.com/vuejs/vue/issues/7841
-        if (key === 'slot') return false;
-        const value = attrs[key]; // add back data attributes like data-test="foo" but do not
-        // add them as classes
-
-        if (key.startsWith('data-')) {
-          data.attrs[key] = value;
-          return false;
-        }
-
-        return value || typeof value === 'string';
-      });
-    }
-
-    if (props.id) {
-      data.domProps = data.domProps || {};
-      data.domProps.id = props.id;
-    }
-
-    return h(props.tag, Object(mergeData["a" /* default */])(data, {
-      staticClass: 'container',
-      class: Array({
-        'container--fluid': props.fluid
-      }).concat(classes || [])
-    }), children);
-  }
-
-}));
-
-/***/ }),
-
 /***/ 192:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1625,12 +1625,12 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--16-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/editUser/_user/index.vue?vue&type=template&id=04811194&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('UserForm',{attrs:{"isEdit":true,"post":_vm.loadedUser},on:{"photo":_vm.photoUpload,"onSave":_vm.onSubmitting}})],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--16-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/editUser/_user/index.vue?vue&type=template&id=8b3db482&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('UserForm',{attrs:{"isEdit":true,"post":_vm.loadedUser},on:{"onSave":_vm.onSubmitting}})],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/editUser/_user/index.vue?vue&type=template&id=04811194&scoped=true&
+// CONCATENATED MODULE: ./pages/editUser/_user/index.vue?vue&type=template&id=8b3db482&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--16-0!./node_modules/vue-loader/lib??vue-loader-options!./components/users/UserForm.vue?vue&type=template&id=55f648dc&scoped=true&
 var UserFormvue_type_template_id_55f648dc_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',{staticClass:"div"},[_c('div',{staticClass:"back"}),_vm._v(" "),_c('v-row',{staticClass:"card1",attrs:{"justify":"center"}},[_c('v-col',{attrs:{"cols":"12","sm":"10","md":"8","lg":"6"}},[_c('v-row',{attrs:{"justify":"center"}},[_c('div',{staticClass:"image"},[(_vm.editedPost.photo === 'no-user-photo.jpg' && _vm.value === 0)?_c('span',[_vm._v(_vm._s(_vm.initials(_vm.editedPost.name)))]):(_vm.value === 0)?_c('img',{attrs:{"src":_vm.photoSrc()}}):_vm._e(),_vm._v(" "),(_vm.editedPost.photo !== 'no-user-photo.jpg')?_c('i',{staticClass:"fas fa-times-circle cir",attrs:{"id":"cir"},on:{"click":_vm.deletePhoto}}):_vm._e(),_vm._v(" "),_c('i',{staticClass:"far fa-edit",attrs:{"id":"pick"},on:{"click":_vm.onPickFile}}),_vm._v(" "),(_vm.value < 100 && _vm.value !== 0)?_c('v-progress-circular',{staticClass:"progress",attrs:{"rotate":-90,"size":100,"width":15,"value":_vm.value,"color":"light-green accent-4"}},[_vm._v("\n            "+_vm._s(_vm.value)+"%\n          ")]):_vm._e()],1)]),_vm._v(" "),_c('BaseInput',{attrs:{"color":"orange","label":"Name"},model:{value:(_vm.editedPost.name),callback:function ($$v) {_vm.$set(_vm.editedPost, "name", $$v)},expression:"editedPost.name"}}),_vm._v(" "),_c('BaseInput',{attrs:{"color":"orange","label":"Email"},model:{value:(_vm.editedPost.email),callback:function ($$v) {_vm.$set(_vm.editedPost, "email", $$v)},expression:"editedPost.email"}}),_vm._v(" "),_c('v-row',[_c('input',{ref:"fileInput",staticStyle:{"display":"none"},attrs:{"type":"file"},on:{"change":_vm.photo}})]),_vm._v(" "),_c('v-card-actions',{staticClass:"pa-0 mt-4"},[_c('v-btn',{staticClass:"success--text mr-2",attrs:{"outlined":""},on:{"click":_vm.onSave}},[_vm._v("save")]),_vm._v(" "),_c('nuxt-link',{attrs:{"to":_vm.link}},[_c('v-btn',{staticClass:"warning--text",attrs:{"outlined":""}},[_vm._v("cancel")])],1)],1)],1)],1)],1)}
@@ -1814,10 +1814,10 @@ var VBtn = __webpack_require__(29);
 var VCard = __webpack_require__(161);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VCol.js
-var VCol = __webpack_require__(182);
+var VCol = __webpack_require__(183);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VGrid/VContainer.js + 1 modules
-var VContainer = __webpack_require__(183);
+var VContainer = __webpack_require__(182);
 
 // EXTERNAL MODULE: ./node_modules/vuetify/lib/components/VProgressCircular/VProgressCircular.js
 var VProgressCircular = __webpack_require__(28);
@@ -1871,11 +1871,6 @@ var apiService = __webpack_require__(16);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ var _uservue_type_script_lang_js_ = ({
@@ -1896,13 +1891,6 @@ var apiService = __webpack_require__(16);
     onSubmitting(formBody) {
       this.$store.dispatch("updateUser", formBody).then(() => {
         this.$router.push("/users/" + this.loadedUser._id);
-      });
-    },
-
-    photoUpload(photo) {
-      this.$store.dispatch("newPhoto", {
-        photo: photo,
-        id: this.loadedUser._id
       });
     }
 
@@ -1927,7 +1915,7 @@ var _user_component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   _user_injectStyles,
-  "04811194",
+  "8b3db482",
   "0d69c0cb"
   
 )

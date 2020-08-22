@@ -20,7 +20,7 @@
       </v-row>
     </div>
     <v-container>
-      <v-row justify="center" class="vh">
+      <v-row v-show="$vuetify.breakpoint.smAndDown" justify="center" class="vh">
         <v-col class="text-center"
           ><h1 class="text-center mt-12">
             Welcome to our Bootcamps <br />
@@ -183,9 +183,6 @@ export default {
 };
 </script>
 <style scoped>
-.z {
-  z-index: -1000000000;
-}
 #text {
   margin-top: 16%;
 }

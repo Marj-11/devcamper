@@ -64,7 +64,6 @@
     <v-navigation-drawer
       class="drawer"
       color="info"
-      app
       v-model="drawer"
       absolute
       temporary
@@ -198,7 +197,7 @@ export default {
 
 <style>
 .drawer {
-  z-index: 1000000;
+  z-index: 100000000;
 }
 
 .img {

@@ -1,11 +1,6 @@
 <template>
   <v-container>
-    <UserForm
-      @photo="photoUpload"
-      :isEdit="true"
-      :post="loadedUser"
-      @onSave="onSubmitting"
-    />
+    <UserForm :isEdit="true" :post="loadedUser" @onSave="onSubmitting" />
   </v-container>
 </template>
 
@@ -32,12 +27,6 @@ export default {
     onSubmitting(formBody) {
       this.$store.dispatch("updateUser", formBody).then(() => {
         this.$router.push("/users/" + this.loadedUser._id);
-      });
-    },
-    photoUpload(photo) {
-      this.$store.dispatch("newPhoto", {
-        photo: photo,
-        id: this.loadedUser._id
       });
     }
   }
