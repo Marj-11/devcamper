@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div>
+    <div v-show="$vuetify.breakpoint.mdAndUp">
       <v-row class="d-flex justify-space-between vh">
-        <v-col cols="6">
+        <v-col v-show="$vuetify.breakpoint.mdAndUp" cols="6">
           <div class="text-center ml-2">
             <h1 id="text" class="text-center">
               Welcome to our Bootcamps <br />
               The ultimate learning resource for programmers
             </h1>
             <shinyBtn v-if="loggedIn" @btn="click" id="btn" />
-            <h4 v-if="!loggedIn" class="text-center mt-5" v-if="!loggedIn">
+            <h4 class="text-center mt-5" v-if="!loggedIn">
               To use this app you need to&nbsp;
               <nuxt-link class="success--text" to="/login">Login</nuxt-link
               >&nbsp;&nbsp;or&nbsp;
@@ -26,6 +26,21 @@
       </v-row>
     </div>
     <v-container>
+      <v-row v-show="$vuetify.breakpoint.smAndDown" justify="center" class="vh">
+        <v-col class="text-center"
+          ><h1 class="text-center mt-12">
+            Welcome to our Bootcamps <br />
+            The ultimate learning resource for programmers
+          </h1>
+          <shinyBtn @btn="click" id="btn" />
+          <h4 class="text-center mt-5" v-if="!loggedIn">
+            To use this app you need to&nbsp;
+            <nuxt-link class="success--text" to="/login">Login</nuxt-link
+            >&nbsp;&nbsp;or&nbsp;
+            <nuxt-link class="yellow--text" to="/signup">Sign Up</nuxt-link>
+          </h4></v-col
+        >
+      </v-row>
       <v-row justify="center">
         <spiner class="mt-10" v-show="isLoading" />
         <a
@@ -58,9 +73,9 @@
                 justify="center"
               >
                 <div
-                  class="display-3"
+                  class="display-3 text-center"
                   :class="{
-                    'display-1': $vuetify.breakpoint.smAndDown
+                    'display-2': $vuetify.breakpoint.smAndDown
                   }"
                 >
                   {{ bootcamp.name }}

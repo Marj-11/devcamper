@@ -86,7 +86,7 @@
 
         <v-divider></v-divider>
       </v-list>
-      <v-row justify="center">
+      <v-row justify="center" class=" mt-2">
         <nuxt-link class="link" to="/"
           ><h1>
             <span class="grey darken-4 orange--text">D</span>evcamper
