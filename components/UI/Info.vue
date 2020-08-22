@@ -3,13 +3,10 @@
     <v-row justify="center">
       <v-col v-for="(image, i) in images" :key="i" cols="8" md="4">
         <v-img :src="image.src" />
-        <h2 class=" mt-5">
+        <h2 class="text-center mt-5">
           {{ titles[i] }}
         </h2>
-        <p
-          class="mt-4 font-weight-black"
-          :class="{ 'text-center': $vuetify.breakpoint.smAndDown }"
-        >
+        <p class="mt-4 font-weight-black text-center">
           {{ texts[i] }}
         </p>
       </v-col>

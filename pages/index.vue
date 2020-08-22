@@ -8,7 +8,7 @@
               Welcome to our Bootcamps <br />
               The ultimate learning resource for programmers
             </h1>
-            <shinyBtn v-if="loggedIn" @btn="click" id="btn" />
+            <shinyBtn v-if="loggedIn" @btn="click" />
             <h4 class="text-center mt-5" v-if="!loggedIn">
               To use this app you need to&nbsp;
               <nuxt-link class="success--text" to="/login">Login</nuxt-link
@@ -32,7 +32,9 @@
             Welcome to our Bootcamps <br />
             The ultimate learning resource for programmers
           </h1>
-          <shinyBtn @btn="click" id="btn" />
+
+          <shinyBtn v-if="loggedIn" @btn="click" />
+
           <h4 class="text-center mt-5" v-if="!loggedIn">
             To use this app you need to&nbsp;
             <nuxt-link class="success--text" to="/login">Login</nuxt-link
@@ -189,13 +191,15 @@ export default {
 };
 </script>
 <style scoped>
+#btn {
+  z-index: -10000000;
+}
 #text {
   margin-top: 16%;
 }
 a {
   max-height: 22px;
   text-decoration: none;
-  color: rgb(0, 255, 13);
 }
 .scroll-down {
   position: absolute;

@@ -1,6 +1,6 @@
 <template>
   <a class="text-center mt-0">
-    <v-switch color="#1565C0" v-model="switch1"></v-switch>
+    <v-switch v-model="switch1"></v-switch>
   </a>
 </template>
 

@@ -4,7 +4,7 @@
     "../server/index.spa.html",
     "../server/index.ssr.html",
     "LICENSES",
-    "app.d9757db.js",
+    "app.c2cbe67.js",
     "commons/3dc86f74.5e46c91.js",
     "commons/5c369a4a.a0f8f8f.js",
     "commons/629925ea.3b3c2e2.js",
@@ -14,8 +14,8 @@
     "img/collaboration.7ca2111.jpg",
     "img/phone.26f8bbd.png",
     "img/wall.6990137.png",
-    "index.3b771e1.js",
-    "pages/about-us/index.d6400ce.js",
+    "index.1ff5871.js",
+    "pages/about-us/index.a029b28.js",
     "pages/bootcamps/_id/index.dddf2d5.js",
     "pages/bootcamps/bootcampForm/index.35f25f9.js",
     "pages/bootcamps/index.a2f5c57.js",
@@ -29,23 +29,23 @@
     "pages/reviews/index.266bee9.js",
     "pages/users/index.d705bb9.js",
     "reviews.id.index.de2a33e.js",
-    "runtime.3b4aff7.js",
+    "runtime.2228c9e.js",
     "signup.index.ca49379.js",
     "users.id.index.b17acae.js",
     "vendors~app.0bdbf91.js"
   ],
   "initial": [
-    "runtime.3b4aff7.js",
+    "runtime.2228c9e.js",
     "commons/app.4df398a.js",
     "vendors~app.0bdbf91.js",
-    "app.d9757db.js"
+    "app.c2cbe67.js"
   ],
   "async": [
     "commons/3dc86f74.5e46c91.js",
     "commons/5c369a4a.a0f8f8f.js",
     "commons/629925ea.3b3c2e2.js",
-    "index.3b771e1.js",
-    "pages/about-us/index.d6400ce.js",
+    "index.1ff5871.js",
+    "pages/about-us/index.a029b28.js",
     "pages/bootcamps/_id/index.dddf2d5.js",
     "pages/bootcamps/bootcampForm/index.35f25f9.js",
     "pages/bootcamps/index.a2f5c57.js",
@@ -354,7 +354,7 @@
     "255c747a": [
       3
     ],
-    "fdd40992": [
+    "0546042e": [
       3
     ],
     "138b1e79": [
@@ -363,7 +363,7 @@
     "1154e2f0": [
       3
     ],
-    "9a6bc896": [
+    "2f111e67": [
       3
     ],
     "4a00c907": [
@@ -375,7 +375,7 @@
     "3c761b2c": [
       3
     ],
-    "5662f800": [
+    "3b2f3e89": [
       3
     ],
     "08a5658b": [
@@ -387,7 +387,7 @@
     "258e669a": [
       3
     ],
-    "e11b4704": [
+    "743ea307": [
       3
     ],
     "40c03419": [
@@ -405,7 +405,7 @@
     "195079bc": [
       3
     ],
-    "0bdce38f": [
+    "86f7c08c": [
       3
     ],
     "45cf113f": [
@@ -417,7 +417,7 @@
     "1dae17a1": [
       3
     ],
-    "7af6ea0d": [
+    "2b9e2638": [
       3
     ],
     "b4a459ac": [
@@ -1377,13 +1377,13 @@
     "2bd813d9": [
       3
     ],
-    "8ca07fec": [
+    "39f62ea9": [
       3
     ],
     "de69c418": [
       3
     ],
-    "3bebb5cc": [
+    "879bb72a": [
       3
     ],
     "436917a6": [
@@ -1923,7 +1923,7 @@
     "4a09b9fa": [
       5
     ],
-    "5508c264": [
+    "3099902c": [
       14
     ],
     "05f40e7a": [
@@ -1959,7 +1959,7 @@
       12,
       11
     ],
-    "7e8e0d8a": [
+    "007bc24c": [
       13,
       8,
       10,
@@ -1970,10 +1970,10 @@
     "01686ef9": [
       5
     ],
-    "227c7a20": [
+    "03e57030": [
       14
     ],
-    "64c5113c": [
+    "4055df04": [
       14
     ],
     "2f37be87": [
@@ -2145,7 +2145,7 @@
       12,
       11
     ],
-    "fc340974": [
+    "031a0c96": [
       13,
       8,
       10,
@@ -2153,7 +2153,7 @@
       12,
       11
     ],
-    "f8178f3c": [
+    "052849b2": [
       13,
       8,
       10,
@@ -2285,7 +2285,7 @@
       12,
       11
     ],
-    "53d2d85e": [
+    "624a6efe": [
       13,
       8,
       10,
@@ -2301,7 +2301,7 @@
       12,
       11
     ],
-    "c94d5362": [
+    "d7c4ea02": [
       13,
       8,
       10,
@@ -2373,7 +2373,7 @@
       12,
       11
     ],
-    "2586b546": [
+    "209f3953": [
       13,
       8,
       10,
@@ -2405,7 +2405,7 @@
       12,
       11
     ],
-    "42e08dc2": [
+    "11f24d15": [
       13,
       8,
       10,
@@ -2491,13 +2491,13 @@
     "02ed1a81": [
       14
     ],
-    "271881f5": [
+    "4908d9a6": [
       14
     ],
     "f1f7af08": [
       14
     ],
-    "56a1cd1a": [
+    "eddbaaaa": [
       14
     ],
     "81c211ec": [
@@ -2796,7 +2796,7 @@
       "commons/629925ea.3b3c2e2.js"
     ],
     "1a3ae26b": [
-      "app.d9757db.js"
+      "app.c2cbe67.js"
     ],
     "b217b8e0": [
       "commons/3dc86f74.5e46c91.js"
@@ -2808,10 +2808,10 @@
       "commons/app.4df398a.js"
     ],
     "777ba69c": [
-      "index.3b771e1.js"
+      "index.1ff5871.js"
     ],
     "3163a302": [
-      "pages/about-us/index.d6400ce.js"
+      "pages/about-us/index.a029b28.js"
     ],
     "f8b5dd66": [
       "pages/bootcamps/_id/index.dddf2d5.js"
@@ -2853,7 +2853,7 @@
       "reviews.id.index.de2a33e.js"
     ],
     "6fca0322": [
-      "runtime.3b4aff7.js"
+      "runtime.2228c9e.js"
     ],
     "41c29f72": [
       "signup.index.ca49379.js"

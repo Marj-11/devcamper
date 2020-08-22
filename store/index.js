@@ -355,7 +355,6 @@ export const actions = {
     newPhoto2({ commit, state }, arr) {
         const files = arr[0].target.files;
         let file = files[0];
-        console.log(file);
         const type = arr[1].hasOwnProperty("role") ? "users" : "bootcamps";
         const id = arr[1]._id;
 

@@ -61,13 +61,7 @@
         >
       </div>
     </v-toolbar>
-    <v-navigation-drawer
-      class="drawer"
-      color="info"
-      v-model="drawer"
-      absolute
-      temporary
-    >
+    <v-navigation-drawer color="info" v-model="drawer" app absolute temporary>
       <v-list nav class="py-0" v-if="user">
         <v-list-item two-line :class="'px-0'">
           <v-list-item-avatar>
@@ -196,10 +190,6 @@ export default {
 </script>
 
 <style>
-.drawer {
-  z-index: 100000000;
-}
-
 .img {
   border-radius: 6px;
 }

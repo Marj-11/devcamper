@@ -1,8 +1,7 @@
 <template>
-  <v-app>
-    <div id="app2"></div>
-    <TheHeader />
-    <nuxt class="nuxt" />
+  <v-app id="app2">
+    <TheHeader style="z-index: 10000" />
+    <nuxt />
     <spiner class="spin" v-if="isLoading" />
     <NotificationContainer class="notification" />
   </v-app>
@@ -56,11 +55,9 @@ export default {
 html {
   scroll-behavior: smooth;
 }
-#app {
+#app2 {
   position: relative;
   font-family: "Inter", sans-serif;
-}
-#app2 {
   background: linear-gradient(
     0deg,
     rgba(0, 8, 23, 1) 0%,
@@ -70,11 +67,12 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  position: absolute;
   width: 100%;
   height: 100%;
 }
 #app3 {
+  position: relative;
+  font-family: "Inter", sans-serif;
   background: linear-gradient(
     0deg,
     rgba(205, 227, 255, 1) 0%,
@@ -84,14 +82,10 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.nuxt {
-  z-index: 100;
-}
 .notification {
   position: fixed;
   bottom: 0;

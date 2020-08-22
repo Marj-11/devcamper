@@ -42,8 +42,8 @@ export default {
   position: absolute;
   top: -760%;
   left: -760%;
-  width: 600%;
-  height: 700%;
+  width: 300%;
+  height: 300%;
   opacity: 0;
   transform: rotate(30deg);
   background: rgba(255, 255, 255, 0.13);
