@@ -1,40 +1,31 @@
 <template>
   <div>
-    <div v-show="$vuetify.breakpoint.mdAndUp">
-      <v-row v-if="loggedIn" class="d-flex justify-space-between vh">
+    <div>
+      <v-row class="d-flex justify-space-between vh">
         <v-col cols="6">
           <div class="text-center ml-2">
             <h1 id="text" class="text-center">
               Welcome to our Bootcamps <br />
               The ultimate learning resource for programmers
             </h1>
-            <shinyBtn @btn="click" id="btn" />
+            <shinyBtn v-if="loggedIn" @btn="click" id="btn" />
+            <h4 v-if="!loggedIn" class="text-center mt-5" v-if="!loggedIn">
+              To use this app you need to&nbsp;
+              <nuxt-link class="success--text" to="/login">Login</nuxt-link
+              >&nbsp;&nbsp;or&nbsp;
+              <nuxt-link class="yellow--text" to="/signup">Sign Up</nuxt-link>
+            </h4>
           </div>
         </v-col>
-        <v-col cols="2" class="mr-n12">
+        <v-col v-show="$vuetify.breakpoint.mdAndUp" cols="2" class="mr-n12">
           <v-img id="phone" :src="phone"></v-img>
         </v-col>
-        <v-col cols="4">
+        <v-col v-show="$vuetify.breakpoint.mdAndUp" cols="4">
           <v-img id="laptop" :src="laptop"></v-img>
         </v-col>
       </v-row>
     </div>
     <v-container>
-      <v-row v-show="$vuetify.breakpoint.smAndDown" justify="center" class="vh">
-        <v-col class="text-center"
-          ><h1 class="text-center mt-12">
-            Welcome to our Bootcamps <br />
-            The ultimate learning resource for programmers
-          </h1>
-          <shinyBtn v-if="loggedIn" @btn="click" id="btn" />
-          <h4 class="text-center mt-5" v-if="!loggedIn">
-            To use this app you need to&nbsp;
-            <nuxt-link class="success--text" to="/login">Login</nuxt-link
-            >&nbsp;&nbsp;or&nbsp;
-            <nuxt-link class="yellow--text" to="/signup">Sign Up</nuxt-link>
-          </h4></v-col
-        >
-      </v-row>
       <v-row justify="center">
         <spiner class="mt-10" v-show="isLoading" />
         <a
