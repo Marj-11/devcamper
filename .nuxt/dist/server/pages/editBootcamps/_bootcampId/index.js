@@ -1794,12 +1794,12 @@ installComponents_default()(component, {VBtn: VBtn["a" /* default */],VCheckbox:
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--16-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/editBootcamps/_bootcampId/index.vue?vue&type=template&id=7e67f7f8&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('BootcampForm',{attrs:{"isEdit":true,"post":_vm.loadedBootcamp},on:{"onSave":_vm.onSubmitting}})],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--16-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/editBootcamps/_bootcampId/index.vue?vue&type=template&id=c882084a&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('BootcampForm',{attrs:{"isEdit":true,"post":_vm.loadedBootcamp},on:{"onSave":_vm.onSubmitting}}),_vm._v(" "),_c('no-ssr')],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/editBootcamps/_bootcampId/index.vue?vue&type=template&id=7e67f7f8&scoped=true&
+// CONCATENATED MODULE: ./pages/editBootcamps/_bootcampId/index.vue?vue&type=template&id=c882084a&scoped=true&
 
 // EXTERNAL MODULE: ./components/bootcamps/BootcampForm.vue + 5 modules
 var BootcampForm = __webpack_require__(210);
@@ -1820,6 +1820,7 @@ var apiService = __webpack_require__(16);
 //
 //
 
+ // import { mapState } from "vuex";
 
 /* harmony default export */ var _bootcampIdvue_type_script_lang_js_ = ({
   components: {
@@ -1839,17 +1840,6 @@ var apiService = __webpack_require__(16);
       this.$store.dispatch("updateBootcamp", formBody).then(() => {
         this.$router.push("/bootcamps/" + this.loadedBootcamp.id);
       });
-    },
-
-    photoUpload(photo) {
-      this.$store.dispatch("newPhoto", {
-        photo: photo,
-        as: "bootcamp"
-      });
-    },
-
-    reloadPage() {
-      window.location.reload();
     }
 
   }
@@ -1883,7 +1873,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   injectStyles,
-  "7e67f7f8",
+  "c882084a",
   "6cfd97bb"
   
 )

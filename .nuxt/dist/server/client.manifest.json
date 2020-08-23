@@ -19,9 +19,9 @@
     "pages/bootcamps/_id/index.c4b1cc2.js",
     "pages/bootcamps/bootcampForm/index.5cb85af.js",
     "pages/bootcamps/index.d2e0c34.js",
-    "pages/editBootcamps/_bootcampId/index.630ba7b.js",
+    "pages/editBootcamps/_bootcampId/index.244c57a.js",
     "pages/editBootcamps/index.50851a4.js",
-    "pages/editUser/_user/index.06e3dcd.js",
+    "pages/editUser/_user/index.710091d.js",
     "pages/editUser/index.8d7b6d1.js",
     "pages/login/_resetpassword/index.d131c74.js",
     "pages/login/index.25cda1d.js",
@@ -29,13 +29,13 @@
     "pages/reviews/index.40ad85c.js",
     "pages/users/index.7a358fe.js",
     "reviews.id.index.c95066e.js",
-    "runtime.1dcc7a6.js",
+    "runtime.abf904e.js",
     "signup.index.2af363d.js",
     "users.id.index.7f8775c.js",
     "vendors~app.0bdbf91.js"
   ],
   "initial": [
-    "runtime.1dcc7a6.js",
+    "runtime.abf904e.js",
     "commons/app.4df398a.js",
     "vendors~app.0bdbf91.js",
     "app.4c3f4a7.js"
@@ -49,9 +49,9 @@
     "pages/bootcamps/_id/index.c4b1cc2.js",
     "pages/bootcamps/bootcampForm/index.5cb85af.js",
     "pages/bootcamps/index.d2e0c34.js",
-    "pages/editBootcamps/_bootcampId/index.630ba7b.js",
+    "pages/editBootcamps/_bootcampId/index.244c57a.js",
     "pages/editBootcamps/index.50851a4.js",
-    "pages/editUser/_user/index.06e3dcd.js",
+    "pages/editUser/_user/index.710091d.js",
     "pages/editUser/index.8d7b6d1.js",
     "pages/login/_resetpassword/index.d131c74.js",
     "pages/login/index.25cda1d.js",
@@ -2598,7 +2598,7 @@
       6,
       5
     ],
-    "5908d912": [
+    "569839a2": [
       20,
       6,
       5
@@ -2608,7 +2608,7 @@
       6,
       5
     ],
-    "31e7c539": [
+    "332014f1": [
       20,
       6,
       5
@@ -2728,7 +2728,7 @@
       6,
       5
     ],
-    "68d88ed8": [
+    "1d92fea6": [
       18,
       6,
       5
@@ -2738,7 +2738,7 @@
       6,
       5
     ],
-    "3799e054": [
+    "ce2500b8": [
       18,
       6,
       5
@@ -2823,13 +2823,13 @@
       "pages/bootcamps/index.d2e0c34.js"
     ],
     "6983cbf6": [
-      "pages/editBootcamps/_bootcampId/index.630ba7b.js"
+      "pages/editBootcamps/_bootcampId/index.244c57a.js"
     ],
     "690c1a10": [
       "pages/editBootcamps/index.50851a4.js"
     ],
     "f574fa18": [
-      "pages/editUser/_user/index.06e3dcd.js"
+      "pages/editUser/_user/index.710091d.js"
     ],
     "15aae1d9": [
       "pages/editUser/index.8d7b6d1.js"
@@ -2853,7 +2853,7 @@
       "reviews.id.index.c95066e.js"
     ],
     "6fca0322": [
-      "runtime.1dcc7a6.js"
+      "runtime.abf904e.js"
     ],
     "41c29f72": [
       "signup.index.2af363d.js"

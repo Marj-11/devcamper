@@ -16,7 +16,6 @@ export default {
   asyncData(context) {
     return apiService.getUser(context.params.user).then(res => {
       let user = res.data.data;
-
       return {
         loadedUser: user
       };
