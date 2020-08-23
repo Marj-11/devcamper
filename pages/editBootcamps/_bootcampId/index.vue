@@ -12,7 +12,6 @@
 <script>
 import BootcampForm from "@/components/bootcamps/BootcampForm.vue";
 import apiService from "@/services/apiService.js";
-// import { mapState } from "vuex";
 
 export default {
   components: {

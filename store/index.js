@@ -357,7 +357,6 @@ export const actions = {
         let file = files[0];
         const type = arr[1].hasOwnProperty("role") ? "users" : "bootcamps";
         const id = arr[1]._id;
-
         const config = {
             onUploadProgress: function(progressEvent) {
                 var percentCompleted = Math.round(
