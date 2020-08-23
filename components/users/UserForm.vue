@@ -31,16 +31,16 @@
           </div>
         </v-row>
 
-        <BaseInput
+        <v-text-field
           color="orange"
           label="Name"
           v-model="editedPost.name"
-        ></BaseInput>
-        <BaseInput
+        ></v-text-field>
+        <v-text-field
           color="orange"
           label="Email"
           v-model="editedPost.email"
-        ></BaseInput>
+        ></v-text-field>
 
         <v-row>
           <input
@@ -65,13 +65,7 @@
 </template>
 
 <script>
-import BaseInput from "@/components/UI/BaseInput.vue";
-
 export default {
-  components: {
-    BaseInput
-  },
-
   props: {
     post: {
       type: Object,
@@ -160,7 +154,6 @@ export default {
   height: 200px;
   align-items: center;
   justify-content: center;
-  /* background-color: chocolate; */
 }
 .image img {
   position: absolute;

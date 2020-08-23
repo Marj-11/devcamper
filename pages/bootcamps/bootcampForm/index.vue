@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <BootcampForm class="card1" @onSave="onSubmitting" />
+    <BootcampForm @onSave="onSubmitting" />
   </v-container>
 </template>
 

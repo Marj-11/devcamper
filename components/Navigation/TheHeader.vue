@@ -107,7 +107,7 @@
             </nuxt-link>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <v-list-item v-if="loggedIn">
           <v-list-item-icon>
             <v-icon>mdi-view-dashboard</v-icon>
           </v-list-item-icon>
@@ -128,7 +128,11 @@
             <v-btn class="ma-2 " outlined>Login</v-btn></nuxt-link
           >
 
-          <v-btn v-if="loggedIn" @click="logout" class="ma-2 red" outlined
+          <v-btn
+            v-if="loggedIn"
+            @click="logout"
+            class="ma-2 red white--text"
+            outlined
             >Logout</v-btn
           >
         </v-row>

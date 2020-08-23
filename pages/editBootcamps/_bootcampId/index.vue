@@ -1,20 +1,17 @@
 <template>
   <v-container>
     <BootcampForm
-      class="card1"
-      @photo="[photoUpload(), reloadPage()]"
       :isEdit="true"
       :post="loadedBootcamp"
       @onSave="onSubmitting"
     />
-    <no-ssr />
+    <!-- <no-ssr /> -->
   </v-container>
 </template>
 
 <script>
 import BootcampForm from "@/components/bootcamps/BootcampForm.vue";
 import apiService from "@/services/apiService.js";
-// import { mapState } from "vuex";
 
 export default {
   components: {

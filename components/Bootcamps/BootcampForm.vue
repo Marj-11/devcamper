@@ -1,43 +1,43 @@
 <template>
   <v-row justify="center" class="ml-n1">
     <v-col cols="12" md="6">
-      <BaseInput label="Name" v-model="editedPost.name"></BaseInput>
-      <BaseInput label="Website" v-model="editedPost.website"></BaseInput>
-      <BaseInput label="Email" v-model="editedPost.email"></BaseInput>
-      <BaseInput
+      <v-text-field label="Name" v-model="editedPost.name"></v-text-field>
+      <v-text-field label="Website" v-model="editedPost.website"></v-text-field>
+      <v-text-field label="Email" v-model="editedPost.email"></v-text-field>
+      <v-text-field
         v-if="!isEdit"
         label="Street"
         v-model="editedPost.street"
-      ></BaseInput>
-      <BaseInput
+      ></v-text-field>
+      <v-text-field
         v-if="!isEdit"
         label="Building Number"
         v-model="editedPost.buildingNumber"
-      ></BaseInput>
-      <BaseInput
+      ></v-text-field>
+      <v-text-field
         v-if="!isEdit"
         label="City"
         v-model="editedPost.city"
-      ></BaseInput>
-      <BaseInput
+      ></v-text-field>
+      <v-text-field
         v-if="!isEdit"
         label="Zipecode"
         v-model="editedPost.zipcode"
-      ></BaseInput>
+      ></v-text-field>
     </v-col>
     <v-col cols="12" md="6">
-      <BaseInput
+      <v-text-field
         v-if="!isEdit"
         label="Country"
         v-model="editedPost.country"
-      ></BaseInput>
-      <BaseInput label="Phone" v-model="editedPost.phone"></BaseInput>
-      <BaseInput label="Careers" v-model="editedPost.careers"></BaseInput>
+      ></v-text-field>
+      <v-text-field label="Phone" v-model="editedPost.phone"></v-text-field>
+      <v-text-field label="Careers" v-model="editedPost.careers"></v-text-field>
 
-      <BaseInput
+      <v-text-field
         label="Description"
         v-model="editedPost.description"
-      ></BaseInput>
+      ></v-text-field>
 
       <input
         type="file"
@@ -51,15 +51,13 @@
       </div>
 
       <v-progress-linear
-        v-show="value < 100 && value !== 0"
+        v-if="value < 100 && value !== 0"
         class="progress"
         v-model="value"
         color="orange"
         height="25"
       >
-        <template v-slot="{ value }">
-          <strong>{{ Math.ceil(value) }}%</strong>
-        </template>
+        {{ value }}%
       </v-progress-linear>
 
       <v-row>
@@ -100,12 +98,7 @@
 </template>
 
 <script>
-import BaseInput from "@/components/UI/BaseInput.vue";
-
 export default {
-  components: {
-    BaseInput
-  },
   props: {
     post: {
       type: Object,
@@ -142,8 +135,6 @@ export default {
   },
   methods: {
     onSave() {
-      //Save the post
-      // const photo = this.$store.state.photoName;
       this.$emit("onSave", this.editedPost);
     },
     photo(event) {
@@ -166,10 +157,21 @@ export default {
     },
     value() {
       const num = this.$store.getters.getTrack;
-      if (num === 100) {
-        document.querySelector(".progress").style.display = "none";
+      if (num == 100) {
+        setTimeout(() => {
+          document.querySelector(".progress").style.display = "none";
+        }, 1500);
       }
       return num;
+    }
+  },
+  watch: {
+    value(newValue) {
+      if (newValue === 100) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
     }
   }
 };
