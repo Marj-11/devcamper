@@ -3,16 +3,16 @@
     <h1 class="mb-8">About Us</h1>
     <p class="font-weight-black">
       Welcome to Devcamper, your number one source for learning web development.
-      We're dedicated to giving you the very best of bootcamps, with a focus on
+      We're dedicated to giving you the very best bootcamp, with a focus on
       dependability, customer service and uniqueness. Founded in 2013 by Marj
-      Hajyahya, Marj has come a long way from its beginnings in Vienna, Austria.
-      When Marj first started out, his passion for passion of helping other
-      students be more eco-friendly, providing the best tools for his fellow
-      programmers drove him to do intense research, quit his day job, and gave
-      him the impetus to turn hard work and inspiration into to a booming
-      learing School. We now serve customers all over the the world and are
-      thrilled to be a part of the quirky, eco-friendly. We hope you enjoy our
-      lectures as much as we enjoy offering them to you. If you have any
+      Hajyahya, Devcamper has come a long way in a short time. Founded on a
+      passion for helping other students, we like to encourage developers to be
+      more eco-friendly, and we pride ourselves on providing the best tools for
+      this purpose. An early positive response to this vision compelled Marj to
+      quit his day job and to devote himself to Devcamper full time. We now
+      serve customers all over the the world and are thrilled to be playing an
+      active part the quirky, and eco-friendly world of web development. We hope
+      you enjoy our lectures as much as we enjoy producing them. If you have any
       questions or comments, please don't hesitate to contact us.
       <br />
       <br />
